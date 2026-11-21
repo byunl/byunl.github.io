@@ -113,9 +113,9 @@
   /* · 首页角标：三根红斜条 + 黑色直角折线；尺寸由 --p-cw / --p-ch 控制，位置由 --p-ct 控制 */
   .hero h1 .corner{top:var(--p-ct);right:0;width:var(--p-cw);height:var(--p-ch)}
   .hero h1 .corner .rt{top:0;width:4.6%;height:24.5%}
-  .hero h1 .corner .rt:nth-child(1){right:20%}
-  .hero h1 .corner .rt:nth-child(2){right:12%}
-  .hero h1 .corner .rt:nth-child(3){right:4%}
+  .hero h1 .corner .rt:nth-child(1){right:calc(16% + 9px)}
+  .hero h1 .corner .rt:nth-child(2){right:calc(8% + 9px)}
+  .hero h1 .corner .rt:nth-child(3){right:9px}
   .hero h1 .en{display:block;font-family:var(--en);font-size:clamp(10px,1vw,13px);font-weight:400;letter-spacing:.45em;color:var(--gray);margin-top:clamp(22px,2.6vw,34px)}
   .hero-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:clamp(24px,4vw,56px);align-items:end;margin-top:clamp(30px,4.4vw,54px);padding-bottom:clamp(22px,2.6vw,34px);border-bottom:1px solid var(--line)}
   .hero-grid p{font-size:var(--fs-body);color:#3a3d40;max-width:580px}
@@ -167,17 +167,17 @@
   .sec-head .sfoot{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-top:clamp(12px,1.4vw,18px)}
   .sec-head .num{font-family:var(--en);font-size:10.5px;letter-spacing:.19em;color:var(--red);white-space:nowrap}
   .sec-head .num b{font-size:10.5px;letter-spacing:.16em;font-weight:500}
-  .sec-head .meta{font-family:var(--en);font-size:10.5px;letter-spacing:.17em;color:var(--gray);text-transform:uppercase;text-align:right;font-weight:var(--w-sm)}
+  .sec-head .meta{transform:translateX(calc((var(--p-cw) + 26px) * -1)) !important;font-family:var(--en);font-size:10.5px;letter-spacing:.17em;color:var(--gray);text-transform:uppercase;text-align:right;font-weight:var(--w-sm)}
   /* 角标：三块平行四边形 + 右下角朝左上的箭头 */
   /* · 章节通用角标：150×110 的小版，作品索引和关于页右上角都是它 */
   .corner{position:absolute;right:0;top:98.5px;width:var(--p-cw);height:var(--p-ch);pointer-events:none;opacity:.94}
   .corner .rt{position:absolute;top:0;width:4.6%;height:24.5%;background:var(--red);transform:skewX(-14deg);transform-origin:bottom left;z-index:2}
-  .corner .rt:nth-child(1){right:20%}
-  .corner .rt:nth-child(2){right:12%}
-  .corner .rt:nth-child(3){right:4%}
+  .corner .rt:nth-child(1){right:calc(16% + 9px)}
+  .corner .rt:nth-child(2){right:calc(8% + 9px)}
+  .corner .rt:nth-child(3){right:9px}
   /* 章节角标：三根红条整体上移 10px，与下方折线拉开距离 */
   .sec-head .corner .rt{top:-10px}
-  .corner svg{position:absolute;right:calc(var(--pad) * -1);bottom:0;left:auto;top:auto;width:calc((100% - 7px) * .8);height:calc((68% - 3.5px) * .8);display:block;overflow:visible;z-index:1}
+  .corner svg{position:absolute;right:0;bottom:0;left:auto;top:auto;width:calc((100% - 7px) * .8);height:calc((68% - 3.5px) * .8);display:block;overflow:visible;z-index:1}
   .corner svg path{stroke:var(--ink);stroke-width:7;fill:none;stroke-linecap:square;stroke-linejoin:miter;vector-effect:non-scaling-stroke}
   .corner svg path:last-child{stroke-linecap:butt}
 
@@ -1946,6 +1946,41 @@ document.addEventListener('DOMContentLoaded',function(){
       svg.style.bottom='0px';
       var d=Math.round(bg.getBoundingClientRect().bottom - svg.getBoundingClientRect().bottom);
       svg.style.bottom=(10-d)+'px';  /* 抵消行盒底部留白，让箭头压在字形底部上 */
+    });
+  }
+  align();
+  window.addEventListener('resize',align);
+  window.addEventListener('hashchange',function(){setTimeout(align,400)});
+  setTimeout(align,900);
+})();
+</script>
+
+<script>
+/* 角标对齐：红条顶部压描边字字形顶部；箭头底部压字形底部；两者都贴内容右边缘 */
+(function(){
+  function align(){
+    document.querySelectorAll('.corner').forEach(function(c){
+      var scope=c.closest('.hero h1')||c.closest('.sec-head');
+      if(!scope) return;
+      var bg=scope.querySelector('.bgw'); if(!bg) return;
+      var b=bg.querySelector('b');
+      var fs=b?parseFloat(getComputedStyle(b).fontSize):96;
+      var capTop=fs*0.27, capBottom=fs*0.11;   /* 行盒上下留白，按字号比例 */
+
+      var rts=c.querySelectorAll('.rt');
+      rts.forEach(function(rt){
+        rt.style.transform='none';
+        var cur=rt.getBoundingClientRect().top;
+        var target=bg.getBoundingClientRect().top+capTop;
+        rt.style.transform='translateY('+Math.round(target-cur)+'px) skewX(-14deg)';
+      });
+
+      var svg=c.querySelector('svg');
+      if(svg){
+        svg.style.bottom='0px';
+        var d=bg.getBoundingClientRect().bottom - svg.getBoundingClientRect().bottom - capBottom;
+        svg.style.bottom=(-Math.round(d))+'px';
+      }
     });
   }
   align();
