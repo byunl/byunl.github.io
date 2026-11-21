@@ -50,7 +50,7 @@
   /* ══════ 01 · 基础重置：清零、字体、链接、容器宽度 ══════ */
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:auto}
   body{font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   ::selection{background:var(--red);color:#fff}
   .mono{font-family:var(--en)}
@@ -1631,22 +1631,34 @@ function aboutView(){
 function notFound(){return `<section class="sec" style="padding-top:120px"><div class="wrap"><h2>页面不存在</h2><p style="margin-top:12px"><a href="#/works">返回作品</a></p></div></section>`}
 
 /* ============ 路由 ============ */
-let __prevPath = '', __listY = 0;
+let __prevPath = '', __listY = 0, __worksNodes = null, __worksCat = null;
 function router(){
   const hash = location.hash.replace(/^#\/?/, '') || 'home';
   const [path, query] = hash.split('?');
   const params = new URLSearchParams(query||'');
   let view;
-  if(__prevPath==='works' && path.startsWith('work/')) __listY = window.scrollY || document.documentElement.scrollTop || 0;
-  const backToList = (path==='works' && __prevPath.startsWith('work/'));
+  const elNow = $('#view');
+  // 离开作品列表时：整块 DOM 节点与滚动高度一起留存，返回时原样接回
+  if(__prevPath==='works' && !path.startsWith('works') && elNow && elNow.children.length){
+    __worksNodes = Array.from(elNow.children);
+    __listY = window.scrollY || document.documentElement.scrollTop || 0;
+  }
+  const catNow = path==='works' ? (params.get('cat')||'all') : '';
+  const reuseList = (path==='works' && __worksNodes && catNow===__worksCat);
   if(path==='works') view = worksView(params.get('cat'));
   else if(path.startsWith('work/')) view = workView(path.split('/')[1]);
   else if(path==='about') view = aboutView();
   else view = homeView();
 
   const el = $('#view');
-  el.innerHTML = view;
-  el.classList.remove('in'); void el.offsetWidth; el.classList.add('in');
+  if(reuseList){
+    el.innerHTML = '';
+    __worksNodes.forEach(n=>el.appendChild(n));
+  } else {
+    el.innerHTML = view;
+    el.classList.remove('in'); void el.offsetWidth; el.classList.add('in');
+    if(path==='works') __worksCat = catNow;
+  }
 
   document.querySelectorAll('.menu a').forEach(a=>{
     const k = a.dataset.nav;
@@ -1656,12 +1668,8 @@ function router(){
 
   reflowMasonry();
   observe();
-  if(backToList && __listY > 0){
-    const y = __listY;
-    window.scrollTo(0, y);
-    requestAnimationFrame(()=>window.scrollTo(0, y));
-    setTimeout(()=>window.scrollTo(0, y), 260);
-    setTimeout(()=>window.scrollTo(0, y), 720);
+  if(reuseList){
+    window.scrollTo(0, __listY);
   } else {
     window.scrollTo(0,0);
   }
