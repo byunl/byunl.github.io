@@ -177,7 +177,7 @@
   .corner .rt:nth-child(3){right:4%}
   /* 章节角标：三根红条整体上移 10px，与下方折线拉开距离 */
   .sec-head .corner .rt{top:-10px}
-  .corner svg{position:absolute;left:3.5px;top:32%;width:calc(100% - 7px);height:calc(68% - 3.5px);display:block;overflow:visible;z-index:1;transform:scaleY(-1)}
+  .corner svg{position:absolute;left:3.5px;top:32%;width:calc(100% - 7px);height:calc(68% - 3.5px);display:block;overflow:visible;z-index:1;transform:translateY(-20px) scaleX(.8) scaleY(-.8)}
   .corner svg path{stroke:var(--ink);stroke-width:7;fill:none;stroke-linecap:square;stroke-linejoin:miter;vector-effect:non-scaling-stroke}
   .corner svg path:last-child{stroke-linecap:butt}
 
@@ -267,6 +267,7 @@
   .d-top .corner .rt:nth-child(1){right:26px}
   .d-top .corner .rt:nth-child(2){right:15px}
   .d-top .corner .rt:nth-child(3){right:4px}
+  .d-top .corner svg{transform:translateY(-9px) scaleX(.8) scaleY(-.8)}
   .d-top .corner svg path{stroke-width:5}
   .d-split{display:block}
   .d-split.tall{display:grid;grid-template-columns:minmax(0,.94fr) minmax(0,.86fr);gap:clamp(26px,3.6vw,58px);align-items:start}
