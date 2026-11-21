@@ -260,8 +260,6 @@
   .d-hero.wide.tallshot img{width:100%;max-width:none;max-height:none}
   .d-hero.wide.tallshot.xlong img{width:min(480px,100%);margin:0 auto}
   .d-hero.wide.band img{width:100%;height:min(72svh,660px);max-width:none;max-height:none;object-fit:cover;object-position:center top;margin:0}
-  .d-hero.wide .d-word{font-size:clamp(40px,9vw,150px);bottom:-.04em}
-  .d-word{position:absolute;z-index:2;left:0;right:0;bottom:-.06em;text-align:center;font-family:var(--en);font-weight:400;font-size:clamp(34px,6.4vw,92px);line-height:.9;letter-spacing:6px;color:transparent;-webkit-text-stroke:1px rgba(20,22,23,.30);pointer-events:none;user-select:none;white-space:nowrap}
   .d-top .corner{position:relative;top:0;right:0;width:46px;height:64px;margin-left:6px}
   .d-top .corner .rt{width:6px;height:24px}
   .d-top .corner .rt:nth-child(1){right:26px}
@@ -272,7 +270,6 @@
   .d-split.tall{display:grid;grid-template-columns:minmax(0,.94fr) minmax(0,.86fr);gap:clamp(26px,3.6vw,58px);align-items:start}
   .d-split.tall .d-hero{margin:0;padding:0;align-self:start;background:transparent;border:0;border-radius:0;display:block}
   .d-split.tall .d-hero img{max-height:none;width:100%;height:auto;object-fit:contain}
-  .d-split.tall .d-word{bottom:-.02em}
   .d-split.tall .d-head{grid-template-columns:1fr;margin-top:0;gap:26px}
   .d-split.tall .d-side{position:static}
 .d-head{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:clamp(24px,3.2vw,48px);margin-top:clamp(28px,4vw,46px);align-items:start;position:relative}
@@ -1274,7 +1271,7 @@ function workView(id){
         <span class="corner"><i class="rt"></i><i class="rt"></i><i class="rt"></i><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 0 H100"/><path d="M0 0 V100"/><path d="M0 0 L100 100"/></svg></span>
       </div>
       <div class="d-split${tall?' tall':''}">
-      <div class="d-hero${heroCls} rv"><img src="${w.imgs[0]}" alt="${w.title}"><span class="d-word">${({poster:'POSTER',type:'TYPOGRAPHY',logo:'LOGO & VI',pack:'PACKAGING',web:'WEB DESIGN',ec:'E-COMMERCE',space:'SPACE',illus:'ILLUSTRATION',print:'PRINT',practice:'PRACTICE'})[w.cat]||''}</span></div>
+      <div class="d-hero${heroCls} rv"><img src="${w.imgs[0]}" alt="${w.title}"></div>
 
       <div class="d-head">
         <div>
