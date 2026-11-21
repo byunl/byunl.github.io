@@ -170,12 +170,12 @@
   .sec-head .meta{font-family:var(--en);font-size:10.5px;letter-spacing:.17em;color:var(--gray);text-transform:uppercase;text-align:right;font-weight:var(--w-sm)}
   /* 角标：三块平行四边形 + 右下角朝左上的箭头 */
   /* · 章节通用角标：150×110 的小版，作品索引和关于页右上角都是它 */
-  .corner{position:absolute;right:0;top:98.5px;width:150px;height:110px;pointer-events:none;opacity:.94}
-  .corner .rt{position:absolute;top:0;width:7px;height:27px;background:var(--red);transform:skewX(-14deg);transform-origin:bottom left;z-index:2}
-  .corner .rt:nth-child(1){right:30px}
-  .corner .rt:nth-child(2){right:18px}
-  .corner .rt:nth-child(3){right:6px}
-  .corner svg{position:absolute;left:3.5px;top:32%;width:calc(100% - 7px);height:calc(68% - 3.5px);display:block;overflow:visible;z-index:1}
+  .corner{position:absolute;right:0;top:98.5px;width:var(--p-cw);height:var(--p-ch);pointer-events:none;opacity:.94}
+  .corner .rt{position:absolute;top:0;width:4.6%;height:24.5%;background:var(--red);transform:skewX(-14deg);transform-origin:bottom left;z-index:2}
+  .corner .rt:nth-child(1){right:20%}
+  .corner .rt:nth-child(2){right:12%}
+  .corner .rt:nth-child(3){right:4%}
+  .corner svg{position:absolute;left:3.5px;top:32%;width:calc(100% - 7px);height:calc(68% - 3.5px);display:block;overflow:visible;z-index:1;transform:scaleY(-1)}
   .corner svg path{stroke:var(--ink);stroke-width:7;fill:none;stroke-linecap:square;stroke-linejoin:miter;vector-effect:non-scaling-stroke}
   .corner svg path:last-child{stroke-linecap:butt}
 
