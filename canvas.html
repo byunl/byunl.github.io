@@ -177,7 +177,7 @@
   .corner .rt:nth-child(3){right:4%}
   /* 章节角标：三根红条整体上移 10px，与下方折线拉开距离 */
   .sec-head .corner .rt{top:-10px}
-  .corner svg{position:absolute;left:3.5px;top:32%;width:calc(100% - 7px);height:calc(68% - 3.5px);display:block;overflow:visible;z-index:1;transform:translateY(-20px) scaleX(.8) scaleY(-.8)}
+  .corner svg{position:absolute;right:calc(var(--pad) * -1);bottom:0;left:auto;top:auto;width:calc((100% - 7px) * .8);height:calc((68% - 3.5px) * .8);display:block;overflow:visible;z-index:1}
   .corner svg path{stroke:var(--ink);stroke-width:7;fill:none;stroke-linecap:square;stroke-linejoin:miter;vector-effect:non-scaling-stroke}
   .corner svg path:last-child{stroke-linecap:butt}
 
@@ -1089,7 +1089,7 @@ function homeView(){
       <h1 class="rv" data-el="主标题块">
         <span class="corner" data-el="角标">
           <i class="rt" data-el="红斜条"></i><i class="rt" data-el="红斜条"></i><i class="rt" data-el="红斜条"></i>
-          <svg viewBox="0 0 100 100" preserveAspectRatio="none" data-el="折线"><path d="M0 0 H100"/><path d="M0 0 V100"/><path d="M0 0 L100 100"/></svg>
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none" data-el="折线"><path d="M0 100 H100"/><path d="M0 100 V0"/><path d="M0 100 L100 0"/></svg>
         </span>
         <span class="zh" data-el="中文主标题">视觉<em>设计</em></span>
         <span class="bgw" data-el="描边字"><b>PORT</b><b>FOLIO</b></span>
@@ -1125,7 +1125,7 @@ function homeView(){
           <span class="cue">Scroll to explore · ${WORKS.length} 组作品</span>
           <a class="cue-link" href="#/works"><span class="cl-t">Works Index</span><span class="ar">→</span></a>
         </div>
-        <span class="corner"><i class="rt"></i><i class="rt"></i><i class="rt"></i><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 0 H100"/><path d="M0 0 V100"/><path d="M0 0 L100 100"/></svg></span>
+        <span class="corner"><i class="rt"></i><i class="rt"></i><i class="rt"></i><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 100 H100"/><path d="M0 100 V0"/><path d="M0 100 L100 0"/></svg></span>
       </div>
       <div class="cat-grid">
         ${CAT_ORDER.map((k,i)=>{
@@ -1159,7 +1159,7 @@ function homeView(){
           <span class="num">Design · Visual · E-commerce</span>
           <span class="meta">04 Services</span>
         </div>
-        <span class="corner"><i class="rt"></i><i class="rt"></i><i class="rt"></i><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 0 H100"/><path d="M0 0 V100"/><path d="M0 0 L100 100"/></svg></span>
+        <span class="corner"><i class="rt"></i><i class="rt"></i><i class="rt"></i><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 100 H100"/><path d="M0 100 V0"/><path d="M0 100 L100 0"/></svg></span>
       </div>
       <div class="cap-list">
         ${svc.map((s,i)=>`
@@ -1180,7 +1180,7 @@ function homeView(){
           <span class="num">Brief · Research · Concept · Craft · Handoff</span>
           <span class="meta">05 Steps</span>
         </div>
-        <span class="corner"><i class="rt"></i><i class="rt"></i><i class="rt"></i><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 0 H100"/><path d="M0 0 V100"/><path d="M0 0 L100 100"/></svg></span>
+        <span class="corner"><i class="rt"></i><i class="rt"></i><i class="rt"></i><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 100 H100"/><path d="M0 100 V0"/><path d="M0 100 L100 0"/></svg></span>
       </div>
       <div class="steps">
         <div class="step rv"><span class="k">01</span><h4>需求沟通</h4><p>先问清楚给谁看、在哪投放、要用户记住哪一句话，把主次和取舍在开始前定掉。</p></div>
@@ -1210,7 +1210,7 @@ function worksView(cat){
           <span class="num">${list.length} 组 · Selected Works</span>
           <span class="meta">2021—2026 Archive</span>
         </div>
-        <span class="corner"><i class="rt"></i><i class="rt"></i><i class="rt"></i><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 0 H100"/><path d="M0 0 V100"/><path d="M0 0 L100 100"/></svg></span>
+        <span class="corner"><i class="rt"></i><i class="rt"></i><i class="rt"></i><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 100 H100"/><path d="M0 100 V0"/><path d="M0 100 L100 0"/></svg></span>
       </div>
       <div class="filter">
         <button data-cat="all" class="${!cat||cat==='all'?'on':''}">全部</button>
@@ -1271,7 +1271,7 @@ function workView(id){
       <div class="d-top">
         <a class="d-back" href="#/works">← 返回作品列表</a>
         <span class="d-count">${pad(idx+1)} / ${pad(WORKS.length)}</span>
-        <span class="corner"><i class="rt"></i><i class="rt"></i><i class="rt"></i><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 0 H100"/><path d="M0 0 V100"/><path d="M0 0 L100 100"/></svg></span>
+        <span class="corner"><i class="rt"></i><i class="rt"></i><i class="rt"></i><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 100 H100"/><path d="M0 100 V0"/><path d="M0 100 L100 0"/></svg></span>
       </div>
       <div class="d-split${tall?' tall':''}">
       <div class="d-hero${heroCls} rv"><img src="${w.imgs[0]}" alt="${w.title}"></div>
@@ -1336,7 +1336,7 @@ function aboutView(){
           <span class="num">吴好玮 / 2005</span>
           <span class="meta">Ganzhou · CN</span>
         </div>
-        <span class="corner"><i class="rt"></i><i class="rt"></i><i class="rt"></i><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 0 H100"/><path d="M0 0 V100"/><path d="M0 0 L100 100"/></svg></span>
+        <span class="corner"><i class="rt"></i><i class="rt"></i><i class="rt"></i><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 100 H100"/><path d="M0 100 V0"/><path d="M0 100 L100 0"/></svg></span>
       </div>
 
       <div class="ab-hero">
@@ -1931,6 +1931,27 @@ document.addEventListener('DOMContentLoaded',function(){
   fit();
   window.addEventListener('hashchange',function(){setTimeout(fit,350)});
   setTimeout(fit,800);
+})();
+</script>
+
+<script>
+/* 箭头底部对齐描边字底部：量差值直接设 bottom，不用 transform，不动画 */
+(function(){
+  function align(){
+    document.querySelectorAll('.corner').forEach(function(c){
+      var svg=c.querySelector('svg'); if(!svg) return;
+      var scope=c.closest('.hero h1')||c.closest('.sec-head');
+      if(!scope) return;
+      var bg=scope.querySelector('.bgw'); if(!bg) return;
+      svg.style.bottom='0px';
+      var d=Math.round(bg.getBoundingClientRect().bottom - svg.getBoundingClientRect().bottom);
+      svg.style.bottom=(10-d)+'px';  /* 抵消行盒底部留白，让箭头压在字形底部上 */
+    });
+  }
+  align();
+  window.addEventListener('resize',align);
+  window.addEventListener('hashchange',function(){setTimeout(align,400)});
+  setTimeout(align,900);
 })();
 </script>
 </body>
