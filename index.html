@@ -247,7 +247,7 @@
   .d-hero.wide img{width:auto;max-width:100%;max-height:min(74svh,700px);height:auto;margin:0 auto;object-fit:contain}
   .d-hero.wide.tallshot img{width:100%;max-width:none;max-height:none}
   .d-hero.wide.tallshot.xlong img{width:min(480px,100%);margin:0 auto}
-  .d-hero.wide.band img{width:100%;height:min(72svh,660px);max-width:none;max-height:none;object-fit:cover;object-position:center top;margin:0}
+  .d-hero.wide.band img{width:100%;height:auto;max-width:100%;max-height:none;object-fit:contain;object-position:center;margin:0}
   .d-top .corner{position:relative;top:0;right:0;width:46px;height:64px;margin-left:6px}
   .d-top .corner .rt{width:6px;height:24px}
   .d-top .corner .rt:nth-child(1){right:26px}
@@ -277,9 +277,9 @@
 
   /* 图集 */
   .gallery{margin-top:clamp(50px,7vw,96px);border-top:1px solid var(--line);padding-top:clamp(30px,4vw,50px)}
-  .stream-flow{margin:clamp(18px,2.6vw,30px) calc(var(--pad) * -1) 0;display:block;background:#0f1011}
-  .stream-flow a{display:block;line-height:0}
-  .stream-flow img{display:block;width:100%;height:auto;margin:0;border:0;border-radius:0}
+  .stream-flow{margin:clamp(18px,2.6vw,30px) 0 0;display:block;background:transparent}
+  .stream-flow a{display:block;line-height:0;text-align:center}
+  .stream-flow img{display:block;width:100%;max-width:100%;height:auto;margin:0 auto;border:0;border-radius:0}
   .gal-top{display:flex;justify-content:space-between;align-items:baseline;gap:20px;margin-bottom:clamp(28px,4vw,44px);flex-wrap:wrap}
   .gal-top h2{font-family:var(--zh);font-size:var(--fs-h2);font-weight:var(--w-h2);letter-spacing:-.005em}
   .gal-top h2 small{font-family:var(--en);font-size:10px;letter-spacing:.33em;color:var(--gray);margin-left:14px;font-weight:400}
@@ -1289,13 +1289,13 @@ function workView(id){
         </div>
         ${stream?`
         <div class="stream-flow">
-          ${rest.map((g,i)=>`<a href="${g}" target="_blank" rel="noopener"><img src="${g}" alt="${w.title} ${i+2}" loading="lazy"></a>`).join('')}
+          ${rest.map((g,i)=>`<a href="${g}" target="_blank" rel="noopener"><img src="${g}" alt="${w.title} ${i+2}"></a>`).join('')}
         </div>`:`
         <div class="shots">
           ${rest.map((g,i)=>`
           <figure class="shot rv">
             <div class="lay"><span class="no">${String(i+2).padStart(2,'0')} / ${String(w.imgs.length).padStart(2,'0')}</span><span class="l"></span></div>
-            <a href="${g}" target="_blank" rel="noopener" class="pic"><img src="${g}" alt="${w.title} ${i+2}" loading="lazy"><span class="more">完整长图 ↗</span></a>
+            <a href="${g}" target="_blank" rel="noopener" class="pic"><img src="${g}" alt="${w.title} ${i+2}"><span class="more">完整长图 ↗</span></a>
             ${w.notes && w.notes[i+1] ? `<figcaption>${w.notes[i+1]}</figcaption>`:''}
           </figure>`).join('')}
         </div>`}
@@ -1857,6 +1857,27 @@ router();
     hits++; clearTimeout(timer); timer=setTimeout(function(){hits=0;},900);
     if(hits>=3){ hits=0; toggle(); }
   }, true);
+})();
+</script>
+
+<script>
+/* 详情页大图适配：不裁剪、不拉伸。宽度最多放到原图的 1.35 倍，超过就居中留白 */
+(function(){
+  function fit(){
+    var imgs=document.querySelectorAll('.d-hero img,.stream-flow img,.shots img');
+    imgs.forEach(function(img){
+      function go(){
+        var cw=img.parentElement.clientWidth||0; if(cw<80){cw=(document.querySelector('.wrap')||{}).clientWidth||1400;} 
+        var nw=img.naturalWidth||0; if(!nw)return;
+        img.style.maxWidth=Math.round(Math.min(cw,Math.max(nw*1.35,480)))+'px';
+        img.style.marginLeft='auto'; img.style.marginRight='auto';
+      }
+      if(img.complete&&img.naturalWidth) go(); else img.addEventListener('load',go,{once:true});
+    });
+  }
+  fit();
+  window.addEventListener('hashchange',function(){setTimeout(fit,350)});
+  setTimeout(fit,800);
 })();
 </script>
 </body>
