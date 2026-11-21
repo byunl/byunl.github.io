@@ -261,9 +261,9 @@
   .d-split.tall{display:grid;grid-template-columns:minmax(0,.94fr) minmax(0,.86fr);gap:clamp(26px,3.6vw,58px);align-items:start}
   .d-split.tall .d-hero{margin:0;padding:0;align-self:start;background:transparent;border:0;border-radius:0;display:block}
   .d-split.tall .d-hero img{max-height:none;width:100%;height:auto;object-fit:contain}
-  .d-split.tall .d-head{grid-template-columns:1fr;margin-top:0;gap:26px}
+  .d-split.tall .d-head{grid-template-columns:minmax(0,1fr);margin-top:0;gap:26px}
   .d-split.tall .d-side{position:static}
-.d-head{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:clamp(24px,3.2vw,48px);margin-top:clamp(28px,4vw,46px);align-items:start;position:relative}
+.d-head{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:clamp(24px,3.2vw,48px);margin-top:clamp(28px,4vw,46px);align-items:start;position:relative;min-width:0}
 .d-ttl{position:relative;margin-bottom:clamp(10px,1.5vw,18px)}
 .d-ttl .en-big{display:block;font-family:var(--en);font-weight:400;font-size:var(--en-big,72px);line-height:.94;letter-spacing:4px;text-transform:uppercase;color:transparent;-webkit-text-stroke:1px rgba(20,22,23,.26);white-space:nowrap;margin-bottom:-.04em;pointer-events:none;user-select:none}
 .d-ttl h1{position:relative;z-index:1;font-family:var(--zh);font-size:clamp(32px,4.1vw,68px);font-weight:var(--w-h1);line-height:1.1;letter-spacing:-.022em}
@@ -1260,7 +1260,7 @@ function workView(id){
       <div class="d-top">
         <a class="d-back" href="#/works">← 返回作品列表</a>
         <span class="d-count">${pad(idx+1)} / ${pad(WORKS.length)}</span>
-        <span class="corner"><i class="rt"></i><i class="rt"></i><i class="rt"></i><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 100 H100"/><path d="M0 100 V0"/><path d="M0 100 L100 0"/></svg></span>
+        <span class="corner"><i class="rt"></i><i class="rt"></i><i class="rt"></i></span>
       </div>
       <div class="d-split${tall?' tall':''}">
       <div class="d-hero${heroCls} rv"><img src="${w.imgs[0]}" alt="${w.title}"></div>
@@ -1959,6 +1959,34 @@ router();
   window.addEventListener('resize',placeNow);
   window.addEventListener('hashchange',function(){setTimeout(placeNow,450)});
   setTimeout(placeNow,1000);
+})();
+/* 详情页标题：强制单行，按可用宽度自适应字号，右侧留空 */
+(function(){
+  function fitTitle(){
+    document.querySelectorAll('.d-head .d-ttl h1').forEach(function(h){
+      h.style.fontSize='';
+      h.style.display='inline-block';
+      h.style.whiteSpace='nowrap';
+      var box=h.parentElement.clientWidth||0; if(!box) return;
+      var avail=box*0.94;
+      var fs=parseFloat(getComputedStyle(h).fontSize)||60;
+      var guard=0;
+      while(h.getBoundingClientRect().width>avail && fs>20 && guard++<60){ fs-=1; h.style.fontSize=fs+'px'; }
+    });
+    document.querySelectorAll('.d-head .d-ttl .en-big').forEach(function(e){
+      e.style.fontSize='';
+      e.style.display='inline-block';
+      var box=e.parentElement.clientWidth||0; if(!box) return;
+      var avail=box*0.94;
+      var fs=parseFloat(getComputedStyle(e).fontSize)||60;
+      var guard=0;
+      while(e.getBoundingClientRect().width>avail && fs>18 && guard++<60){ fs-=1; e.style.fontSize=fs+'px'; }
+    });
+  }
+  fitTitle();
+  window.addEventListener('resize',fitTitle);
+  window.addEventListener('hashchange',function(){setTimeout(fitTitle,420)});
+  setTimeout(fitTitle,900);
 })();
 </script>
 </body>
