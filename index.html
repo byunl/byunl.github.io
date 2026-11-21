@@ -22,7 +22,22 @@
     --fs-body:clamp(13.5px,.95vw,14.5px);
     --fs-sm:10.5px;
     --fs-cap:14px; --fs-tag:11px; --ab-gap:42px; --sh:1;
-    --w-h1:900; --w-h2:700; --w-sm:500;
+        --w-h1:900; --w-h2:700; --w-sm:500;
+    /* ============================================================
+       ★★★ 可调参数 · 只改冒号后面的数字，别删分号和 var 调用 ★★★
+       ============================================================ */
+    /* 首页主标题「视觉设计」的字号上限（桌面端实际大小），现在 64 */
+    --p-h1:64px;
+    /* 章节标题「作品索引」「关于我」的字号上限，现在 64，跟上面一致才齐平 */
+    --p-h2:64px;
+    /* 首页右上角角标：宽度 / 高度 / 距标题顶部的距离，现在 200 / 147 / 8 */
+    --p-cw:200px;
+    --p-ch:147px;
+    --p-ct:8px;
+    /* 关于页手机版照片高度，现在 340 */
+    --p-photo:340px;
+
+  /* ══════ 01 · 基础重置：清零、字体、链接、容器宽度 ══════ */
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -35,6 +50,7 @@
   .en{font-family:var(--en)}
 
   /* ========== 自定义光标 ========== */
+  /* ══════ 02 · 自定义光标：桌面端跟随鼠标的黑白圆环，手机端隐藏 ══════ */
   #dot,#ring{position:fixed;top:0;left:0;z-index:9999;pointer-events:none;border-radius:50%;mix-blend-mode:difference;will-change:transform}
   #dot{width:6px;height:6px;background:#fff;margin:-3px 0 0 -3px}
   #ring{width:38px;height:38px;border:1px solid rgba(255,255,255,.6);margin:-19px 0 0 -19px;transition:width .3s var(--ease),height .3s var(--ease),margin .3s var(--ease),opacity .3s}
@@ -42,7 +58,9 @@
   @media (pointer:coarse){#dot,#ring{display:none}}
 
   /* ========== 顶部 ========== */
+  /* ══════ 03 · 顶部滚动进度条：页面往下滚时红色线从左侧长出来 ══════ */
   #prog{position:fixed;top:0;left:0;height:2px;width:100%;background:var(--red);transform:scaleX(0);transform-origin:0 50%;z-index:80}
+  /* ══════ 04 · 顶部导航栏：毛玻璃底 + 三个入口 + 红色下划线跟随 ══════ */
   nav{position:fixed;top:0;left:0;right:0;z-index:70;background:rgba(239,239,236,.78);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
   .nav-in{display:flex;justify-content:center;align-items:center;height:78px;gap:clamp(24px,3.6vw,64px);margin:0 auto;padding:0 var(--pad)}
   .brand{font-weight:900;letter-spacing:-.01em;font-size:19px;white-space:nowrap;display:flex;align-items:center;gap:8px}
@@ -50,6 +68,7 @@
   .ticker{flex:0 1 clamp(140px,38vw,560px);overflow:hidden;min-width:0;opacity:.5;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
   .ticker .row{display:flex;gap:58px;white-space:nowrap;animation:slide 34s linear infinite;width:max-content}
   .ticker span{font-family:var(--en);font-size:12.5px;letter-spacing:.21em;text-transform:uppercase}
+  /* ══════ 05 · 动画关键帧：跑马灯、进场、角标红条呼吸 ══════ */
   @keyframes slide{to{transform:translateX(-50%)}}
   .menu{display:flex;gap:34px;position:relative}
   .menu a{font-size:16.5px;font-weight:500;letter-spacing:.1em;color:var(--gray);position:relative;z-index:2;padding:6px 0;transition:color .3s}
@@ -70,17 +89,20 @@
   @keyframes viewIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
   /* ========== Hero ========== */
+  /* ══════ 06 · 首页首屏 HERO：整个第一屏的容器 ══════ */
   .hero{position:relative;min-height:auto;display:flex;flex-direction:column;justify-content:flex-start;padding:clamp(92px,9.4vh,112px) 0 0;overflow:hidden}
   .hero-top{position:relative;z-index:3;max-width:1900px;margin:0 auto 0;width:100%;padding:0 var(--pad) 0;display:flex;justify-content:space-between;gap:20px;font-family:var(--en);font-size:10.5px;letter-spacing:.25em;text-transform:uppercase;color:var(--gray)}
   .hero-main{position:relative;z-index:2;max-width:1900px;margin:0 auto;width:100%;padding:0 var(--pad);display:flex;flex-direction:column;justify-content:center;flex:1 1 auto}
-  .hero h1{position:relative;font-family:var(--zh);font-size:clamp(34px,4.7vw,64px);font-weight:var(--w-h1);line-height:1;letter-spacing:-.02em;isolation:isolate}
+  /* · 主标题块：中文主标题「视觉设计」+ 背后描边字 PORT FOLIO + 右上角角标，三层叠在一起 */
+  .hero h1{position:relative;font-family:var(--zh);font-size:clamp(34px,4.7vw,var(--p-h1));font-weight:var(--w-h1);line-height:1;letter-spacing:-.02em;isolation:isolate}
   .hero h1 .zh{position:absolute;left:0;top:50%;transform:translateY(-49%);z-index:3;font-family:var(--zh);font-weight:var(--w-h1);font-size:1em;letter-spacing:-.02em;white-space:nowrap}
   .hero h1 .bgw{display:block;position:relative;z-index:1;pointer-events:none;user-select:none}
   .hero h1 .bgw b{display:block;font-family:var(--en);font-weight:400;font-size:1.5em;line-height:1;letter-spacing:6px;color:transparent;-webkit-text-stroke:1px rgba(20,22,23,.34);white-space:nowrap}
   .hero h1 .bgw b:first-child{padding-left:.02em}
   .hero h1 .bgw b:last-child{padding-left:0}
   .hero h1 em{font-style:normal;color:var(--red)}
-  .hero h1 .corner{top:.125em;right:0;width:3.133em;height:2.297em}
+  /* · 首页角标：三根红斜条 + 黑色直角折线；尺寸由 --p-cw / --p-ch 控制，位置由 --p-ct 控制 */
+  .hero h1 .corner{top:var(--p-ct);right:0;width:var(--p-cw);height:var(--p-ch)}
   .hero h1 .corner .rt{top:0;width:4.6%;height:24.5%}
   .hero h1 .corner .rt:nth-child(1){right:20%}
   .hero h1 .corner .rt:nth-child(2){right:12%}
@@ -118,11 +140,12 @@
 
   /* ========== 章节头：编号在上，中文压在英文中间 ========== */
   .sec{padding:clamp(46px,6vw,92px) 0}
+  /* ══════ 07 · 章节头：作品索引 / 关于 的编号、大标题、角标那一整块 ══════ */
   .sec-head{position:relative;display:block;margin-bottom:clamp(20px,2.8vw,38px);padding-top:16px}
   .sec-tags{display:flex;gap:16px;align-items:baseline;margin-bottom:12px}
   .sec-tags span{font-family:var(--en);font-size:10.5px;letter-spacing:.23em;color:var(--gray);font-weight:400;text-transform:uppercase}
   .sec-tags span:first-child{color:var(--red)}
-  .sec-head h2{font-size:clamp(34px,4.7vw,64px)}
+  .sec-head h2{font-size:clamp(34px,4.7vw,var(--p-h2))}
   .stack2{position:relative;line-height:1;font-family:var(--zh)}
   .stack2 .bgw{display:block;position:relative;z-index:1}
   .stack2 .bgw b{display:block;font-family:var(--en);font-weight:400;font-size:1.5em;line-height:1.0;letter-spacing:6px;color:transparent;-webkit-text-stroke:1px rgba(20,22,23,.34);white-space:nowrap}
@@ -134,6 +157,7 @@
   .sec-head .num b{font-size:10.5px;letter-spacing:.16em;font-weight:500}
   .sec-head .meta{font-family:var(--en);font-size:10.5px;letter-spacing:.17em;color:var(--gray);text-transform:uppercase;text-align:right;font-weight:var(--w-sm)}
   /* 角标：三块平行四边形 + 右下角朝左上的箭头 */
+  /* · 章节通用角标：150×110 的小版，作品索引和关于页右上角都是它 */
   .corner{position:absolute;right:0;top:98.5px;width:150px;height:110px;pointer-events:none;opacity:.94}
   .corner .rt{position:absolute;top:0;width:7px;height:27px;background:var(--red);transform:skewX(-14deg);transform-origin:bottom left;z-index:2}
   .corner .rt:nth-child(1){right:30px}
@@ -178,6 +202,7 @@
   .filter button:hover{color:var(--ink);border-color:var(--ink);background:#fff}
   .filter button.on{background:var(--ink);color:#fff;border-color:var(--ink);box-shadow:0 12px 26px rgba(20,22,23,.16)}
 
+  /* ══════ 08 · 瀑布流作品网格：四列等高分配，卡片高度不齐 ══════ */
   .masonry{display:grid;grid-template-columns:repeat(4,1fr);gap:0 clamp(12px,1.5vw,20px);align-items:start}
   .masonry .mcol{display:flex;flex-direction:column;min-width:0}
   .masonry .mcol .work{margin:0 0 clamp(14px,1.8vw,24px);width:100%}
@@ -209,6 +234,7 @@
   .work .cap .sub u{text-decoration:none;font-family:var(--en);font-size:var(--fs-tag);letter-spacing:.08em;color:var(--gray);text-align:right}
 
   /* ========== 详情 ========== */
+  /* ══════ 09 · 作品详情页：大图、图集、上下篇 ══════ */
   .detail{padding:112px 0 0}
   .d-top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:clamp(20px,3vw,38px)}
   .d-back{font-family:var(--en);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gray);display:inline-flex;align-items:center;gap:8px;transition:color .3s}
@@ -291,6 +317,7 @@
   .d-nav .next{text-align:right}
 
   /* ========== 关于 ========== */
+  /* ══════ 10 · 关于页：左侧文案 + 右侧形象照，两边并排 ══════ */
   .ab-hero{display:grid;grid-template-columns:minmax(0,1.66fr) minmax(200px,28%);gap:0 var(--ab-gap);align-items:end;margin-top:0;margin-bottom:0}
   .ab-copy{position:relative;z-index:2;display:flex;flex-direction:column;height:100%;justify-content:flex-start;padding-left:clamp(0px,1.8vw,32px)}
   .ab-copy h1{font-family:var(--zh);font-size:clamp(21px,3.4vw,42px);font-weight:var(--w-h1);line-height:1.3;letter-spacing:-.01em}
@@ -318,7 +345,7 @@
   .ab-facts .f span em{font-style:normal;font-family:var(--en);font-size:9px;font-weight:400;letter-spacing:.19em;text-transform:uppercase;color:rgba(20,22,23,.32)}
   @media (max-width:760px){
     .ab-hero{grid-template-columns:1fr;gap:18px}
-    .ab-figure{aspect-ratio:auto;height:38svh;max-height:340px;order:0;margin-top:6px;overflow:hidden;min-height:0}
+    .ab-figure{aspect-ratio:auto;height:38svh;max-height:var(--p-photo);order:0;margin-top:6px;overflow:hidden;min-height:0}
     .ab-figure .wm{font-size:18vw;line-height:.84;padding:0 4px}
     .ab-figure img{width:80%;height:100%;inset:0 0 0 auto;margin:0;object-fit:contain;object-position:right bottom}
     .ab-figure .bars{right:14px}
@@ -381,6 +408,7 @@
   .contact a.mail:hover{color:var(--red);border-color:var(--red)}
   .contact .meta{display:flex;flex-wrap:wrap;gap:10px 36px;margin-top:30px;font-size:13px;color:var(--gray)}
   footer{border-top:1px solid var(--line);padding:26px 0 34px}
+  /* ══════ 11 · 页脚：微信、邮箱、合作对象 ══════ */
   .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;align-items:center;font-family:var(--en);font-size:10.5px;letter-spacing:.19em;text-transform:uppercase;color:var(--gray)}
   .foot .big{font-family:"Noto Sans SC",sans-serif;font-size:15px;font-weight:700;letter-spacing:.02em;color:var(--ink);text-transform:none}
 
@@ -519,11 +547,11 @@
 </head>
 <body>
 
-<div id="prog"></div>
+<div id="prog" data-el="滚动进度条"></div>
 <div id="dot"></div><div id="ring"></div>
 <div id="pv"><img alt=""></div>
 
-<nav>
+<nav data-el="导航栏">
   <div class="nav-in">
     <a class="brand" href="#/home">设计<span>Design</span></a>
     <div class="ticker">
@@ -541,7 +569,7 @@
   </div>
 </nav>
 
-<main id="view"></main>
+<main id="view" data-el="内容容器"></main>
 
 <!-- 素材预加载清单：供发布打包扫描本地图片，页面不可见 -->
 <div style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
@@ -1007,9 +1035,7 @@ function contactBlock(){
       <span class="foot-idx">吴好玮 · WU HAOWEI · 2026</span>
     </div>
     <div class="foot-row">
-      <span><i>电话：</i>159 7086 0649</span>
       <span><i>微信：</i>byunl_0649</span>
-      <span><i>QQ 邮箱：</i>2760096559@qq.com</span>
       <span class="fb"></span>
       <span><i>城市：</i>江西赣州</span>
       <span><i>状态：</i>开放求职 · 平面 / 视觉设计</span>
@@ -1037,20 +1063,38 @@ function homeView(){
     ['电商 / 详情','E-commerce','主图、SKU 图、详情页、推广图组，按平台阅读逻辑排布信息。'],
   ];
   return `
-  <section class="hero">
-    <div class="hero-top"><span>WU HAOWEI / 平面视觉设计师</span><span>EST. 2005 — GANZHOU, CN</span></div>
-    <div class="hero-main">
-      <h1 class="rv"><span class="corner"><i class="rt"></i><i class="rt"></i><i class="rt"></i><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 0 H100"/><path d="M0 0 V100"/><path d="M0 0 L100 100"/></svg></span><span class="zh">视觉<em>设计</em></span><span class="bgw"><b>PORT</b><b>FOLIO</b></span><span class="en">VISUAL DESIGNER · 2026</span></h1>
-      <div class="hero-grid">
+  <section class="hero" data-el="首页首屏">
+    <!-- 顶部信息条：左「名字 / 头衔」，右「起始年份 — 城市」 -->
+    <div class="hero-top" data-el="顶部信息条"><span>WU HAOWEI / 平面视觉设计师</span><span>EST. 2005 — GANZHOU, CN</span></div>
+    <div class="hero-main" data-el="首屏主内容">
+
+      <!-- ┌──────────────────────────────────────────────┐
+           │ 主标题块（三层叠加，从下往上）                 │
+           │  ① .bgw  描边字 PORT / FOLIO（空心灰英文）      │
+           │  ② .zh   中文主标题「视觉设计」，黑字 + 红字    │
+           │  ③ .corner 角标，右上角三根红斜条 + 黑折线      │
+           └──────────────────────────────────────────────┘ -->
+      <h1 class="rv" data-el="主标题块">
+        <span class="corner" data-el="角标">
+          <i class="rt" data-el="红斜条"></i><i class="rt" data-el="红斜条"></i><i class="rt" data-el="红斜条"></i>
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none" data-el="折线"><path d="M0 0 H100"/><path d="M0 0 V100"/><path d="M0 0 L100 100"/></svg>
+        </span>
+        <span class="zh" data-el="中文主标题">视觉<em>设计</em></span>
+        <span class="bgw" data-el="描边字"><b>PORT</b><b>FOLIO</b></span>
+        <span class="en" data-el="英文副标">VISUAL DESIGNER · 2026</span>
+      </h1>
+      <!-- 简介段落（左）+ 现状信息栏（右），一行两栏 -->
+      <div class="hero-grid" data-el="简介与信息栏">
         <p class="rv d1">平面 / 视觉设计师，擅长海报、排版、标志、包装与电商视觉。1 年全职电商视觉经验，2 年外包与自由接单，作品从品牌概念做到落地物料。</p>
-        <div class="side rv d2">
+        <div class="side rv d2" data-el="右侧信息栏">
           <span class="k">Currently</span>
           <span class="v">2026 届 · 平面广告制作</span>
           <span class="k" style="margin-top:16px">Based in</span>
           <span class="v">江西赣州</span>
         </div>
       </div>
-      <div class="hero-services rv d3">
+      <!-- 底部服务标签：5 个胶囊，只是分类词，不是链接 -->
+      <div class="hero-services rv d3" data-el="服务标签行">
         <span>Poster</span><span>Typography</span><span>Logo / VI</span><span>Packaging</span><span>E-commerce</span>
       </div>
     </div>
@@ -1275,7 +1319,7 @@ function aboutView(){
     <div class="wrap">
       <div class="sec-head">
         <div class="sec-tags rv"><span>03</span><span>—</span><span>ABOUT</span></div>
-        <h2 class="stack2 rv"><span class="bgw"><b>WHO</b><b>AM I</b></span><span class="zh">关于<em>我</em></span></h2>
+        <h2 class="stack2 rv" data-el="关于页标题块"><span class="bgw" data-el="描边字"><b>WHO</b><b>AM I</b></span><span class="zh" data-el="中文主标题">关于<em>我</em></span></h2>
         <div class="sfoot">
           <span class="num">吴好玮 / 2005</span>
           <span class="meta">Ganzhou · CN</span>
@@ -1310,10 +1354,8 @@ function aboutView(){
         <div class="f rv d1"><span><i>常住</i><em>Based</em></span><b>江西赣州</b></div>
         <div class="f rv d1"><span><i>学校</i><em>School</em></span><b>赣州职业技术学院 · 平面广告制作</b></div>
         <div class="f rv d2"><span><i>学历</i><em>Degree</em></span><b>五年制预备技师 · 2021–2026</b></div>
-        <div class="f rv d2"><span><i>电话</i><em>Phone</em></span><b>159 7086 0649</b></div>
         <div class="f rv d2"><span><i>微信</i><em>WeChat</em></span><b>byunl_0649</b></div>
         <div class="f rv d3"><span><i>邮箱</i><em>Mail</em></span><b>wuhaowei59@gmail.com</b></div>
-        <div class="f rv d3"><span><i>QQ 邮箱</i><em>QQ Mail</em></span><b>2760096559@qq.com</b></div>
       </div>
     </div>
   </section>
