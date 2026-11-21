@@ -660,6 +660,26 @@
 .sec-tags{flex-wrap:wrap;align-items:baseline}
 .sec-tags .tg-meta{flex:0 0 100%;margin-top:6px;font-family:var(--en);font-size:10px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--gray)}
 
+
+/* ── 4级标题（紧接内容的那种）统一字号 ── */
+.cap-row h3{font-size:14px;line-height:1.35}
+.ab-facts .f span i{font-size:14px}
+.d-side .r span{font-size:14px}
+@media (max-width:640px){.cap-row h3{font-size:13.5px}.ab-facts .f span i{font-size:13.5px}}
+/* ── 标题下的英文贴近 ── */
+.cap-row h3 em{margin-top:2px;line-height:1.25}
+.b-head h2 small{margin-top:3px;line-height:1.2}
+.ab-facts .f span{gap:1px;line-height:1.15}
+.ab-facts .f span em{margin-top:1px}
+.work .cap .sub,.cat-card .cap .sub{margin-top:5px;gap:6px}
+.job .t em{margin-top:1px}
+.job .t em i{margin-top:1px;line-height:1.2}
+/* ── 工作经历时间落款移到右下角 ── */
+.job{position:relative}
+.job .t .row{justify-content:flex-start}
+.job .when{position:absolute;right:0;bottom:26px;padding-top:0;line-height:1.2}
+@media (max-width:640px){.job .when{bottom:18px}}
+
 /* ========== 实时调参面板（Ctrl+Shift+L / ?lab=1 / 连点品牌标 3 次） ========== */
 #lab{position:fixed;right:16px;bottom:16px;z-index:88;width:258px;background:rgba(252,252,250,.97);border:1px solid var(--line);border-radius:14px;box-shadow:0 24px 64px rgba(20,22,23,.2);padding:13px 15px 12px;font-family:var(--zh);font-size:12px;color:var(--ink);display:none;backdrop-filter:blur(14px)}
 #lab.on{display:block}
