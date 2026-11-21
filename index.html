@@ -1619,11 +1619,14 @@ function aboutView(){
 function notFound(){return `<section class="sec" style="padding-top:120px"><div class="wrap"><h2>页面不存在</h2><p style="margin-top:12px"><a href="#/works">返回作品</a></p></div></section>`}
 
 /* ============ 路由 ============ */
+let __prevPath = '', __listY = 0;
 function router(){
   const hash = location.hash.replace(/^#\/?/, '') || 'home';
   const [path, query] = hash.split('?');
   const params = new URLSearchParams(query||'');
   let view;
+  if(__prevPath==='works' && path.startsWith('work/')) __listY = window.scrollY || document.documentElement.scrollTop || 0;
+  const backToList = (path==='works' && __prevPath.startsWith('work/'));
   if(path==='works') view = worksView(params.get('cat'));
   else if(path.startsWith('work/')) view = workView(path.split('/')[1]);
   else if(path==='about') view = aboutView();
@@ -1641,7 +1644,16 @@ function router(){
 
   reflowMasonry();
   observe();
-  window.scrollTo(0,0);
+  if(backToList && __listY > 0){
+    const y = __listY;
+    window.scrollTo(0, y);
+    requestAnimationFrame(()=>window.scrollTo(0, y));
+    setTimeout(()=>window.scrollTo(0, y), 260);
+    setTimeout(()=>window.scrollTo(0, y), 720);
+  } else {
+    window.scrollTo(0,0);
+  }
+  __prevPath = path;
 }
 
 /* 瀑布流：按最短列依次放，保证靠前的作品永远在上面 */
