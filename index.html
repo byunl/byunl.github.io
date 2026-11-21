@@ -556,12 +556,27 @@
   }
 
   .foot-mail{font-size:22px;font-weight:600;letter-spacing:-.02em}
-  .foot-row{font-size:14px;line-height:1.9;letter-spacing:.01em}
+  .foot-row{font-size:14px;line-height:1.45;letter-spacing:.01em}
   .foot-row i{font-size:10.5px;font-weight:700;letter-spacing:.14em}
   .partners .pl-list{font-size:10.5px}
 
   .d-ttl .en-big{font-size:min(var(--en-big,44px),18px);white-space:nowrap;letter-spacing:2px}
 }
+
+
+/* ══════ 字体分工：装饰性小字 + 红色文字 = 特殊字体；正文 + 联系方式 = 普通字体 ══════ */
+.sec-tags span,.idx-cue .cue,.idx-cue .cue-link,.cat-card .cap .sub i,.cat-card .cap .sub u,
+.work .cap .sub i,.work .cap .sub u,.d-tags span,.hero-services span,.hero-top,
+.partners .pl-list,.foot-cue,.foot-idx,.d-nav a .k,.sec-head .num,.ab-now .k,
+.d-count,.menu a .no,.ab-facts .f span em{
+  font-family:var(--disp);
+}
+/* 联系方式整块：普通字体，行距压紧 */
+.foot-top{padding-top:clamp(12px,1.4vw,18px)}
+.foot-row{margin-top:clamp(10px,1.2vw,14px);gap:4px clamp(16px,2.2vw,36px);line-height:1.35;
+  font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif}
+.foot-row i{font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif}
+.partners{margin-top:clamp(12px,1.5vw,18px);padding-top:clamp(9px,1.1vw,13px);line-height:1.4}
 
 /* ========== 实时调参面板（Ctrl+Shift+L / ?lab=1 / 连点品牌标 3 次） ========== */
 #lab{position:fixed;right:16px;bottom:16px;z-index:88;width:258px;background:rgba(252,252,250,.97);border:1px solid var(--line);border-radius:14px;box-shadow:0 24px 64px rgba(20,22,23,.2);padding:13px 15px 12px;font-family:var(--zh);font-size:12px;color:var(--ink);display:none;backdrop-filter:blur(14px)}
@@ -580,6 +595,20 @@
 #lab .btns button:hover{border-color:var(--red);color:var(--red)}
 #lab .tip{margin-top:8px;font-size:10px;color:var(--gray);line-height:1.55}
 #lab .tip b{font-weight:600;color:var(--ink)}
+
+/* ══════ 装饰性小字与红色文字：统一特殊字体；正文与联系方式：普通字体 ══════ */
+.hero-top,.sec-tags span,.idx-cue .cue,.cat-card .cap .sub u,.work .cap .sub u,
+.d-tags span,.hero-services span,.sec-head .num,.cat-card .cap .sub i,
+.work .cap .sub i,.idx-cue .cue-link,.ab-now .k,.d-count,.menu a .no,
+.idx-row .cat,.idx-row .n{
+  font-family:var(--disp);
+}
+/* 联系方式整块：普通字体 + 行距收紧 */
+.foot-top{padding-top:clamp(10px,1.2vw,16px)}
+.foot-row{font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  line-height:1.35;gap:4px clamp(16px,2.2vw,36px);margin-top:clamp(9px,1.1vw,13px)}
+.foot-row i{font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;font-weight:700;font-size:12px}
+.partners{margin-top:clamp(12px,1.4vw,18px);padding-top:clamp(10px,1.2vw,14px)}
 </style>
 </head>
 <body>
