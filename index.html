@@ -340,6 +340,7 @@
   .ab-figure .cap{display:none}
   .ab-facts{display:grid;grid-template-columns:repeat(2,1fr);gap:0 clamp(24px,4vw,56px);border-top:1px solid var(--line)}
   .ab-facts .f{display:grid;grid-template-columns:118px 1fr;gap:16px;padding:17px 0;border-bottom:1px solid var(--line);font-size:var(--fs-body)}
+  .ab-facts .f b{white-space:nowrap}
   .ab-facts .f span{display:flex;flex-direction:column;gap:3px;padding-top:1px;text-transform:none}
   .ab-facts .f span i{font-style:normal;font-family:var(--zh);font-size:12.5px;font-weight:600;letter-spacing:.08em;color:var(--ink)}
   .ab-facts .f span em{font-style:normal;font-family:var(--en);font-size:9px;font-weight:400;letter-spacing:.19em;text-transform:uppercase;color:rgba(20,22,23,.32)}
@@ -616,9 +617,9 @@
 
 /* ══════ 全站统一为常用免费黑体（思源黑体 / Noto Sans SC 族）══════ */
 :root{
-  --disp:"Noto Sans SC","Source Han Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
-  --zh:"Noto Sans SC","Source Han Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
-  --en:"Noto Sans SC","Source Han Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --disp:"Liuyun","Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --zh:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --en:"Liuyun","Space Grotesk",sans-serif;
 }
 /* 装饰性元素加粗，但不过重以免糊笔画 */
 .sec-tags span,.foot-cue,.foot-idx,.idx-cue .cue,.partners,.hero-top,.hero-top span,
@@ -638,9 +639,14 @@
 
 
 /* 章节描边字减压：线更淡、字号略缩，中文不再被压住 */
-.stack2 .bgw b{font-size:1.42em;-webkit-text-stroke:1px rgba(20,22,23,.2);letter-spacing:5px}
-.stack2 .zh{text-shadow:0 0 10px var(--bg),0 0 10px var(--bg),0 0 16px var(--bg)}
-.hero h1 .zh{text-shadow:0 0 10px var(--bg),0 0 10px var(--bg),0 0 16px var(--bg)}
+.stack2 .bgw b{font-size:1.5em;-webkit-text-stroke:1px rgba(20,22,23,.34);letter-spacing:6px}
+.stack2 .zh{text-shadow:0 0 5px var(--bg)}
+.hero h1 .zh{text-shadow:0 0 5px var(--bg)}
+
+
+/* ── 编号行与英文说明：上下两行紧挨（同首页左上排版）── */
+.sec-tags{flex-wrap:wrap;align-items:baseline}
+.sec-tags .tg-meta{flex:0 0 100%;margin-top:6px;font-family:var(--en);font-size:10px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--gray)}
 
 /* ========== 实时调参面板（Ctrl+Shift+L / ?lab=1 / 连点品牌标 3 次） ========== */
 #lab{position:fixed;right:16px;bottom:16px;z-index:88;width:258px;background:rgba(252,252,250,.97);border:1px solid var(--line);border-radius:14px;box-shadow:0 24px 64px rgba(20,22,23,.2);padding:13px 15px 12px;font-family:var(--zh);font-size:12px;color:var(--ink);display:none;backdrop-filter:blur(14px)}
@@ -960,13 +966,13 @@ const WORKS = [
    desc:['毕业设计展的主视觉：把「设计的合力」四个字拆成竖排大字压在画面左侧，英文 GRADUATION WORK EXHIBITION 横排在上，红黑色块承担重量。','信息区按展期、地点、主办方的顺序排在底部，字号逐级递减，保证远看只有标题、近看能读完。'],
    notes:['含展览信息区完整排版。']},
 
-  {id:34, cat:'space', title:'中国历史文化 · 展陈排版', en:'MUSEUM EXHIBITION LAYOUT', role:'展陈排版',
+  {id:34, cat:'poster', title:'中国历史文化 · 展陈排版', en:'MUSEUM EXHIBITION LAYOUT', role:'展陈排版',
    imgs:['assets/n_museum.webp'],
    tags:['展陈','信息设计','长图'],
    desc:['博物馆展陈的信息排版：把展区动线、单元标题、说明牌分成三级，用同一条竖轴串起来，让观众在长图里就能读完整个展。','说明牌字号按 1.5 米观看距离定，图例与实物照片统一留白。'],
    notes:['整条展陈信息长图。']},
 
-  {id:35, cat:'space', title:'展厅 · 2.5D 建模', en:'GALLERY 2.5D MODEL', role:'空间建模',
+  {id:35, cat:'poster', title:'展厅 · 2.5D 建模', en:'GALLERY 2.5D MODEL', role:'空间建模',
    imgs:['assets/n_museum3d.webp'],
    tags:['2.5D','空间','建模'],
    desc:['按展陈方案做的 2.5D 轴测图，用等距视角交代展墙、展台与动线关系，配色压到三种，突出结构而不是材质。','建模用于向甲方说明空间分配，不追求照片级渲染。'],
@@ -978,7 +984,7 @@ const WORKS = [
    desc:['健身机构的课程预约页，长图两张：一张课程列表页，一张课程详情与预约区块。首屏用大图压半屏，课程卡按三列排，价格与课时同一行右对齐，方便横向比价。','深色底配荧光绿点缀，按钮只保留一个主色，避免预约路径上出现多个视觉重心。'],
    notes:['01 课程列表：三列课程卡与价格对照。','02 课程详情：课时安排、教练与预约入口。']},
 
-  {id:40, cat:'print', title:'校园明信片 · 建筑插画', en:'CAMPUS POSTCARD SET', role:'插画 / 印刷',
+  {id:40, cat:'illus', title:'校园明信片 · 建筑插画', en:'CAMPUS POSTCARD SET', role:'插画 / 印刷',
    imgs:['assets/pc_01.webp','assets/pc_02.webp','assets/pc_03.webp','assets/pc_04.webp','assets/pc_05.webp','assets/pc_06.webp','assets/pc_07.webp','assets/pc_08.webp','assets/pc_front_gate.webp','assets/pc_front_court.webp','assets/pc_front_lib.webp','assets/pc_front_a3.webp'],
    tags:['插画','校园文创','印刷'],
    desc:['赣州职业技术学院校园明信片，一套八张建筑插画：天真楼、图书馆、风雨球场、校门与操场，每张对应一处校园记忆。','全部在 AI 里矢量绘制，透视统一、色板收敛到六色，保证八张摆在一起是一组而不是拼盘。','印刷稿按 148×100 出血排版，背面留手写区与校徽位置；这组在 2023 年文创设计大赛拿到个人一等奖。'],
@@ -1092,7 +1098,7 @@ const WORKS = [
    desc:['网页临摹，按原站结构复刻导航站的首屏、分类栏与卡片列表。','栅格、间距、字号逐项量过再还原，图片按区块一一对应。'],
    notes:['结构临摹练习，界面版权归原站。']},
 
-  {id:66, cat:'print', title:'活页式手册 · 云肩纹样', en:'LOOSE-LEAF HANDBOOK', role:'书籍 / 手册',
+  {id:66, cat:'pack', title:'活页式手册 · 云肩纹样', en:'LOOSE-LEAF HANDBOOK', role:'书籍 / 手册',
    imgs:['assets/r_handbook1.webp','assets/r_handbook2.webp','assets/r_handbook3.webp'],
    tags:['手册','纹样','编排'],
    desc:['云肩纹样主题活页手册，三页跨页展示：纹样提取、配色方案、版式应用。','页边留白压窄，图与注文按对页关系排，翻页时图案能接上。'],
@@ -1110,7 +1116,7 @@ const WORKS = [
    desc:['ZIPPO 眼镜品类首屏主视觉，两版配色：一版冷调，一版暖调。','产品压在画面右下，标题占左上三分之一，留出安全区给平台角标。'],
    notes:['两版配色备选。']},
 
-  {id:69, cat:'space', title:'魏家大院 · 古建导览', en:'HISTORIC COMPOUND', role:'展陈 / 导览',
+  {id:69, cat:'poster', title:'魏家大院 · 古建导览', en:'HISTORIC COMPOUND', role:'展陈 / 导览',
    imgs:['assets/s_weifamily.webp'],
    tags:['展陈','古建','版式'],
    desc:['魏家大院古建导览版式，横向展开：左侧建筑实景，右侧竖排说明与年代。','标题用宋体压左上，说明文字按参观动线分段。'],
@@ -1118,8 +1124,8 @@ const WORKS = [
 
 ];
 
-const CAT = {poster:'海报设计', type:'排版字体', logo:'标志设计', pack:'包装设计', web:'网页设计', ec:'电商视觉', space:'空间展陈', illus:'插画板绘', print:'印刷物料'};
-const CAT_ORDER = ['ec','poster','type','logo','pack','web','space','print','illus'];
+const CAT = {poster:'海报设计', type:'排版字体', logo:'标志设计', pack:'包装设计', web:'网页设计', ec:'电商视觉', illus:'插画板绘'};
+const CAT_ORDER = ['ec','poster','type','logo','pack','web','illus'];
 
 /* 展示顺序：实盘电商在前，同类聚拢，强弱按作品完成度排 */
 const ORDER = [19,20,21,23,22,24,67,68,10,12,13,11,14,63,64,54,53,52,55,56,2,4,5,32,33,3,6,7,8,9,25,26,27,60,61,62,15,16,31,40,49,66,17,18,29,36,34,35,69,44,48,1,28,50,51,57,58,59,65];
@@ -1165,9 +1171,9 @@ function contactBlock(){
     </div>
     <div class="foot-row">
       <span><i>微信：</i>byunl_0649</span>
-      <span><i>城市：</i>江西赣州</span>
-      <span><i>状态：</i>开放求职 · 平面 / 视觉设计</span>
       <span class="fm"><i>邮箱：</i>wuhaowei59@gmail.com</span>
+      <span><i>状态：</i>开放求职 · 平面 / 视觉设计</span>
+      <span><i>城市：</i>江西赣州</span>
     </div>
     <div class="partners">
       <span class="pl-k">合作对象<b>/</b>Selected Clients</span>
@@ -1231,11 +1237,11 @@ function homeView(){
   <section class="sec">
     <div class="wrap">
       <div class="sec-head">
-        <div class="sec-tags rv"><span>01</span><span>—</span><span>INDEX</span></div>
+        <div class="sec-tags rv"><span>01</span><span>—</span><span>INDEX</span><span class="tg-meta">2021—2026 Archive</span></div>
         <h2 class="stack2 rv"><span class="bgw"><b>SELECTED</b><b>INDEX</b></span><span class="zh">作品<em>索引</em></span></h2>
         <div class="sfoot">
           <span class="num">${WORKS.length} 组 / ${Object.keys(CAT).length} 类</span>
-          <span class="meta">2021—2026 Archive</span>
+          
         </div>
         <div class="idx-cue">
           <span class="cue">Scroll to explore · ${WORKS.length} 组作品</span>
@@ -1320,11 +1326,11 @@ function worksView(cat){
   <section class="sec" style="padding-top:84px">
     <div class="wrap">
       <div class="sec-head">
-        <div class="sec-tags rv"><span>02</span><span>—</span><span>WORKS</span></div>
+        <div class="sec-tags rv"><span>02</span><span>—</span><span>WORKS</span><span class="tg-meta">2021—2026 Archive</span></div>
         <h2 class="stack2 rv"><span class="bgw"><b>ALL</b><b>WORKS</b></span><span class="zh">${cat&&cat!=='all'?CAT[cat].slice(0,-2)+'<em>'+CAT[cat].slice(-2)+'</em>':'全部<em>作品</em>'}</span></h2>
         <div class="sfoot">
           <span class="num">${list.length} 组 · Selected Works</span>
-          <span class="meta">2021—2026 Archive</span>
+          
         </div>
         <span class="corner"><i class="rt"></i><i class="rt"></i><i class="rt"></i><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 100 H100"/><path d="M0 100 V0"/><path d="M0 100 L100 0"/></svg></span>
       </div>
@@ -1446,11 +1452,11 @@ function aboutView(){
   <section class="sec" style="padding-top:84px;padding-bottom:0">
     <div class="wrap">
       <div class="sec-head">
-        <div class="sec-tags rv"><span>03</span><span>—</span><span>ABOUT</span></div>
+        <div class="sec-tags rv"><span>03</span><span>—</span><span>ABOUT</span><span class="tg-meta">Ganzhou · CN</span></div>
         <h2 class="stack2 rv" data-el="关于页标题块"><span class="bgw" data-el="描边字"><b>WHO</b><b>AM I</b></span><span class="zh" data-el="中文主标题">关于<em>我</em></span></h2>
         <div class="sfoot">
           <span class="num">吴好玮 / 2005</span>
-          <span class="meta">Ganzhou · CN</span>
+          
         </div>
         <span class="corner"><i class="rt"></i><i class="rt"></i><i class="rt"></i><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 100 H100"/><path d="M0 100 V0"/><path d="M0 100 L100 0"/></svg></span>
       </div>
@@ -1480,8 +1486,8 @@ function aboutView(){
       <div class="ab-facts">
         <div class="f rv"><span><i>姓名</i><em>Name</em></span><b>吴好玮 · 男 · 2005.09</b></div>
         <div class="f rv d1"><span><i>常住</i><em>Based</em></span><b>江西赣州</b></div>
-        <div class="f rv d1"><span><i>学校</i><em>School</em></span><b>赣州职业技术学院 · 平面广告制作</b></div>
-        <div class="f rv d2"><span><i>学历</i><em>Degree</em></span><b>五年制预备技师 · 2021–2026</b></div>
+        <div class="f rv d1"><span><i>学校</i><em>School</em></span><b>赣州职业技术学院</b></div>
+        <div class="f rv d2"><span><i>学历</i><em>Degree</em></span><b style="display:block">平面广告制作</b><b style="display:block;font-weight:400;color:#5a5d61">五年制预备技师 · 2021–2026</b></div>
         <div class="f rv d2"><span><i>微信</i><em>WeChat</em></span><b>byunl_0649</b></div>
         <div class="f rv d3"><span><i>邮箱</i><em>Mail</em></span><b>wuhaowei59@gmail.com</b></div>
       </div>
