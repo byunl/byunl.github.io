@@ -167,7 +167,7 @@
   .sec-head .sfoot{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-top:clamp(12px,1.4vw,18px)}
   .sec-head .num{font-family:var(--en);font-size:10.5px;letter-spacing:.19em;color:var(--red);white-space:nowrap}
   .sec-head .num b{font-size:10.5px;letter-spacing:.16em;font-weight:500}
-  .sec-head .meta{transform:translateX(calc((var(--p-cw) + 26px) * -1)) !important;font-family:var(--en);font-size:10.5px;letter-spacing:.17em;color:var(--gray);text-transform:uppercase;text-align:right;font-weight:var(--w-sm)}
+  .sec-head .meta{transform:translateX(calc((var(--p-cw) + 26px) * -1));font-family:var(--en);font-size:10.5px;letter-spacing:.17em;color:var(--gray);text-transform:uppercase;text-align:right;font-weight:var(--w-sm)}
   /* 角标：三块平行四边形 + 右下角朝左上的箭头 */
   /* · 章节通用角标：150×110 的小版，作品索引和关于页右上角都是它 */
   .corner{position:absolute;right:0;top:98.5px;width:var(--p-cw);height:var(--p-ch);pointer-events:none;opacity:.94}
@@ -1973,7 +1973,10 @@ document.addEventListener('DOMContentLoaded',function(){
         rt.style.transform='none';
         var cur=rt.getBoundingClientRect().top;
         var target=bg.getBoundingClientRect().top+capTop;
-        rt.style.transform='translateY('+Math.round(target-cur)+'px) skewX(-14deg)';
+        var dv=Math.round(target-cur);
+        rt.style.transform='translateY('+dv+'px) skewX(-14deg)';
+        var m=scope.querySelector('.meta');
+        if(m) m.style.transform='translateX(calc((var(--p-cw) + 26px) * -1)) translateY('+dv+'px)';
       });
 
       var svg=c.querySelector('svg');
