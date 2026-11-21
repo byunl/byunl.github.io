@@ -319,7 +319,7 @@
   /* ========== 关于 ========== */
   /* ══════ 10 · 关于页：左侧文案 + 右侧形象照，两边并排 ══════ */
   .ab-hero{display:grid;grid-template-columns:minmax(0,1.66fr) minmax(200px,28%);gap:0 var(--ab-gap);align-items:end;margin-top:0;margin-bottom:0}
-  .ab-copy{position:relative;z-index:2;display:flex;flex-direction:column;height:100%;justify-content:flex-start;padding-left:clamp(0px,1.8vw,32px)}
+  .ab-copy{position:relative;z-index:2;display:flex;flex-direction:column;height:100%;justify-content:flex-start;padding-left:0}
   .ab-copy h1{font-family:var(--zh);font-size:clamp(21px,3.4vw,42px);font-weight:var(--w-h1);line-height:1.3;letter-spacing:-.01em}
   .ab-copy h1 em{font-style:normal;color:var(--red)}
   .ab-copy .p{margin-top:clamp(18px,2.2vw,26px);max-width:min(100%,1000px);font-size:var(--fs-body);line-height:1.95;color:#3a3d41;text-align:justify;text-align-last:left}
@@ -336,7 +336,7 @@
   .ab-figure .bars.top{top:12px}
   .ab-figure .bars i{display:block;width:10px;background:var(--red);height:44px;transform:skewX(-18deg);transform-origin:bottom left}
   
-  .ab-figure img{position:absolute;inset:2.5% 0 0 0;z-index:2;display:block;width:100%;height:100%;object-fit:cover;object-position:50% 4%;margin:0}
+  .ab-figure img{position:absolute;inset:0 0 0 0;z-index:2;display:block;width:100%;height:100%;object-fit:cover;object-position:50% 4%;margin:0}
   .ab-figure .cap{display:none}
   .ab-facts{display:grid;grid-template-columns:repeat(2,1fr);gap:0 clamp(24px,4vw,56px);border-top:1px solid var(--line)}
   .ab-facts .f{display:grid;grid-template-columns:118px 1fr;gap:16px;padding:17px 0;border-bottom:1px solid var(--line);font-size:var(--fs-body)}
@@ -1513,10 +1513,6 @@ function shiftCorner(co, target, dy){
   co.style.top = Math.round(cur + (tr.bottom - cr.bottom) + (dy || 0)) + 'px';
 }
 function alignCorners(){
-  if((location.hash||'').indexOf('about') > -1){
-    document.querySelectorAll('.sec-head .corner .rt').forEach(el=>el.remove());
-  }
-
   document.querySelectorAll('.sec-head .corner').forEach(co=>{
     const head = co.parentElement;
     const sf = head.querySelector('.sfoot');
