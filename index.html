@@ -680,6 +680,8 @@
 .cap-row h3 em{margin-top:-1px;line-height:1.2}
 .b-head h2 small{margin-top:-1px;line-height:1.15}
 .ab-facts .f span em{margin-top:-1px}
+.ab-facts .f b.lead2{grid-column:2;font-weight:400;color:var(--ink);letter-spacing:0}
+@media (max-width:640px){.ab-facts .f b.lead2{grid-column:2}}
 .job .t em i{margin-top:-1px;line-height:1.15}
 
 
@@ -1052,7 +1054,7 @@ const WORKS = [
    desc:['字体海报，四个大字拆成上下两行，笔画做粗细分层。','中间插一条竖排小字解释语义，靠疏密对比撑住画面。'],
    notes:['字体实验练习。']},
   {id:10, cat:'logo', title:'赣南脐橙 · 橙字标志', en:'ORANGE CHARACTER LOGO', role:'标志设计 / VI',
-   imgs:['assets/p_logo_cheng.webp','assets/b_logo_cheng_a.webp','assets/b_logo_cheng_b.webp'],
+   imgs:['assets/p_logo_cheng.webp','assets/b_logo_cheng_a.webp'],
    tags:['LOGO','品牌VI','字体标志'],
    desc:['以“橙”字为基础变形，右部融入首字母 G，线条圆润呼应脐橙外形；橙色主色搭配米白底色。','三张一组：完整版面、制图规范版与标准稿，字腔里的脐橙剖面、测绘线与安全边界都保留下来。'],
    notes:['01 整套版面：标志、标准色与墨稿反白。','02 制图版：字腔剖面与测绘线、比例标注。','03 标准稿：纯色应用与中英文字标组合。']},
@@ -1157,13 +1159,18 @@ const WORKS = [
    desc:['奶粉竖版详情页，顶部主视觉压产品罐，往下依次是卖点、配方、冲调方式。','整页按手机阅读宽度排，一屏一个信息点，底部放规格与资质。'],
    notes:['长图详情，按平台竖版规范输出。']},
 
+  {id:86, cat:'logo', title:'赣南脐橙 · 橙字标准稿', en:'ORANGE LOGO STANDARD', role:'标志设计 / 标准稿',
+   imgs:['assets/b_logo_cheng_b.webp'],
+   tags:['LOGO','标准稿','纯色应用'],
+   desc:['“橙”字标志的纯色定稿：单色橙块直接落地，下方接中文品名与 GANNANQICHENG 英文标，不加底纹和辅助图形。','同一套字形换到纯色场景，验证标志在单色、反白、小尺寸下都不散架。'],
+   notes:['标准稿：纯色应用与中英文字标组合。']},
 ];
 
 const CAT = {poster:'海报设计', type:'排版字体', logo:'标志设计', pack:'包装设计', web:'网页设计', ec:'电商视觉', illus:'插画板绘'};
-const CAT_ORDER = ['ec','poster','type','logo','pack','web','illus'];
+const CAT_ORDER = ['ec','poster','type','logo','pack','illus','web'];
 
 /* 展示顺序：实盘电商在前，同类聚拢，强弱按作品完成度排 */
-const ORDER = [19,84,68,22,23,24,20,21,85,1,2,3,4,5,32,33,34,35,50,51,52,53,54,83,80,81,82,55,56,57,58,59,69,6,7,8,9,25,26,27,28,60,61,62,10,11,12,13,14,63,64,15,16,31,66,17,18,29,36,65,40,44,48,67];
+const ORDER = [19,84,68,22,23,24,20,21,85,1,2,3,4,5,32,33,34,35,50,51,52,53,54,83,80,81,82,55,56,57,58,59,69,6,7,8,9,25,26,27,28,60,61,62,10,86,11,12,13,14,63,64,15,16,31,66,40,44,48,17,18,29,36,65,67];
 WORKS.sort((a,b)=>ORDER.indexOf(a.id)-ORDER.indexOf(b.id));
 const $ = (s,r=document)=>r.querySelector(s);
 
@@ -1389,7 +1396,7 @@ const AR = {
   19:0.68, 20:1.0, 21:1.0, 22:1.0, 23:0.75, 24:1.06,
   25:1.13, 26:1.47, 27:2.99, 28:0.62, 29:0.56, 31:0.75,
   32:0.71, 33:0.71, 34:0.44, 35:1.58, 36:0.66, 
-  40:1.48, 44:1.43, 48:0.71, 50:0.59, 51:0.61, 52:0.71, 53:0.75, 54:0.70, 55:0.84, 56:0.76, 57:1.43, 58:0.71, 59:0.67, 60:0.69, 61:1.13, 62:0.83, 63:2.89, 64:0.71, 65:1.36, 66:0.67, 67:0.39, 68:0.68, 69:1.46, 80:0.707, 81:0.667, 82:0.692, 83:0.573, 84:0.678, 85:1.0
+  40:1.48, 44:1.43, 48:0.71, 50:0.59, 51:0.61, 52:0.71, 53:0.75, 54:0.70, 55:0.84, 56:0.76, 57:1.43, 58:0.71, 59:0.67, 60:0.69, 61:1.13, 62:0.83, 63:2.89, 64:0.71, 65:1.36, 66:0.67, 67:0.39, 68:0.68, 69:1.46, 80:0.707, 81:0.667, 82:0.692, 83:0.573, 84:0.678, 85:1.0, 86:1.0
 };
 
 function workCard(w,i){
@@ -1522,7 +1529,7 @@ function aboutView(){
         <div class="f rv"><span><i>姓名</i><em>Name</em></span><b>吴好玮 · 男 · 2005.09</b></div>
         <div class="f rv d1"><span><i>常住</i><em>Based</em></span><b>江西赣州</b></div>
         <div class="f rv d1"><span><i>学校</i><em>School</em></span><b>赣州职业技术学院</b></div>
-        <div class="f rv d2"><span><i>学历</i><em>Degree</em></span><b style="display:block">平面广告制作</b><b style="display:block;font-weight:400;color:#5a5d61">五年制预备技师 · 2021–2026</b></div>
+        <div class="f rv d2"><span><i>学历</i><em>Degree</em></span><b style="display:block">平面广告制作</b><b class="lead2">五年制预备技师 · 2021–2026</b></div>
         <div class="f rv d2"><span><i>微信</i><em>WeChat</em></span><b>byunl_0649</b></div>
         <div class="f rv d3"><span><i>邮箱</i><em>Mail</em></span><b>wuhaowei59@gmail.com</b></div>
       </div>
