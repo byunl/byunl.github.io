@@ -625,6 +625,35 @@
 @media (max-width:1240px){.masonry{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 @media (max-width:760px){.masonry{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:0 10px}.masonry .mcol .work{margin:0 0 12px}}
 
+
+/* ══════ 全站统一为常用免费黑体（思源黑体 / Noto Sans SC 族）══════ */
+:root{
+  --disp:"Noto Sans SC","Source Han Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --zh:"Noto Sans SC","Source Han Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --en:"Noto Sans SC","Source Han Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+}
+/* 装饰性元素加粗，但不过重以免糊笔画 */
+.sec-tags span,.foot-cue,.foot-idx,.idx-cue .cue,.partners,.hero-top,.hero-top span,
+.sec-head .num,.foot-row i,.cat-card .cap .sub i,.work .cap .sub i{font-weight:700}
+.d-tags span,.hero-services span,.d-count,.partners .pl-list{font-weight:600}
+/* 中文四周补背景色，背后描边英文不贴笔画 */
+.hero h1 .zh,.stack2 .zh,.d-ttl h1,.ab-copy h1{text-shadow:0 0 8px var(--bg),0 0 8px var(--bg)}
+/* 组标签：始终单行横排、去掉多余间隙 */
+.cat-card .cap .sub i,.work .cap .sub i{white-space:nowrap;letter-spacing:.06em;padding:4px 9px;text-transform:none}
+/* 手机一级标题与首页「视觉设计」同尺寸 */
+@media (max-width:640px){
+  .sec-head h2{font-size:clamp(38px,11.4vw,52px)!important}
+}
+/* 标题与首图之间留白 */
+.d-head{margin-top:clamp(44px,6vw,78px)}
+@media (max-width:640px){.d-head{margin-top:36px}}
+
+
+/* 章节描边字减压：线更淡、字号略缩，中文不再被压住 */
+.stack2 .bgw b{font-size:1.42em;-webkit-text-stroke:1px rgba(20,22,23,.2);letter-spacing:5px}
+.stack2 .zh{text-shadow:0 0 10px var(--bg),0 0 10px var(--bg),0 0 16px var(--bg)}
+.hero h1 .zh{text-shadow:0 0 10px var(--bg),0 0 10px var(--bg),0 0 16px var(--bg)}
+
 /* ========== 实时调参面板（Ctrl+Shift+L / ?lab=1 / 连点品牌标 3 次） ========== */
 #lab{position:fixed;right:16px;bottom:16px;z-index:88;width:258px;background:rgba(252,252,250,.97);border:1px solid var(--line);border-radius:14px;box-shadow:0 24px 64px rgba(20,22,23,.2);padding:13px 15px 12px;font-family:var(--zh);font-size:12px;color:var(--ink);display:none;backdrop-filter:blur(14px)}
 #lab.on{display:block}
@@ -1242,7 +1271,7 @@ function homeView(){
             <span class="frame"><img src="${meta[2]}" alt="${meta[0]}" loading="lazy"></span>
             <span class="cap">
               <span class="t">${meta[0]}</span>
-              <span class="sub"><i>${n} 组</i><u>${meta[1]} ↗</u></span>
+              <span class="sub"><i>${n}组</i><u>${meta[1]} ↗</u></span>
             </span>
           </a>`;}).join('')}
       </div>
