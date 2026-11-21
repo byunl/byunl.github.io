@@ -13,7 +13,8 @@
     --card:#ffffff; --red:#C8352B; --ease:cubic-bezier(.16,1,.3,1);
     --pad:clamp(16px,2.2vw,40px);
     --r-xl:28px; --r-lg:20px; --r-md:14px; --r-sm:10px; --pill:999px;
-    --zh:"Liuyun","Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+    --disp:"Liuyun","Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+    --zh:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
     --en:"Liuyun","Space Grotesk",sans-serif;
     /* 字号体系：h1 页面主标题 / h2 二级 / h3 三级 / body 正文 / sm 装饰元信息 */
     --fs-h1:clamp(40px,5.4vw,84px);
@@ -91,11 +92,11 @@
   /* ========== Hero ========== */
   /* ══════ 06 · 首页首屏 HERO：整个第一屏的容器 ══════ */
   .hero{position:relative;min-height:auto;display:flex;flex-direction:column;justify-content:flex-start;padding:clamp(92px,9.4vh,112px) 0 0;overflow:hidden}
-  .hero-top{position:relative;z-index:3;max-width:1900px;margin:0 auto 0;width:100%;padding:0 var(--pad) 0;display:flex;justify-content:space-between;gap:20px;font-family:var(--en);font-size:10.5px;letter-spacing:.25em;text-transform:uppercase;color:var(--gray)}
+  .hero-top{position:relative;z-index:3;max-width:1900px;margin:0 auto 0;width:100%;padding:0 var(--pad) 0;display:flex;justify-content:space-between;gap:20px;font-family:var(--zh);font-size:10.5px;letter-spacing:.25em;text-transform:uppercase;color:var(--gray)}
   .hero-main{position:relative;z-index:2;max-width:1900px;margin:0 auto;width:100%;padding:0 var(--pad);display:flex;flex-direction:column;justify-content:center;flex:1 1 auto}
   /* · 主标题块：中文主标题「视觉设计」+ 背后描边字 PORT FOLIO + 右上角角标，三层叠在一起 */
-  .hero h1{position:relative;font-family:var(--zh);font-size:clamp(34px,4.7vw,var(--p-h1));font-weight:var(--w-h1);line-height:1;letter-spacing:-.02em;isolation:isolate}
-  .hero h1 .zh{position:absolute;left:0;top:50%;transform:translateY(-49%);z-index:3;font-family:var(--zh);font-weight:var(--w-h1);font-size:1em;letter-spacing:-.02em;white-space:nowrap}
+  .hero h1{position:relative;font-family:var(--disp);font-size:clamp(34px,4.7vw,var(--p-h1));font-weight:var(--w-h1);line-height:1;letter-spacing:-.02em;isolation:isolate}
+  .hero h1 .zh{position:absolute;left:0;top:50%;transform:translateY(-49%);z-index:3;font-family:var(--disp);font-weight:var(--w-h1);font-size:1em;letter-spacing:-.02em;white-space:nowrap}
   .hero h1 .bgw{display:block;position:relative;z-index:1;pointer-events:none;user-select:none}
   .hero h1 .bgw b{display:block;font-family:var(--en);font-weight:400;font-size:1.5em;line-height:1;letter-spacing:6px;color:transparent;-webkit-text-stroke:1px rgba(20,22,23,.34);white-space:nowrap}
   .hero h1 .bgw b:first-child{padding-left:.02em}
@@ -133,8 +134,8 @@
   .cat-card .cap{display:block;padding:15px 17px 17px}
   .cat-card .cap .t{display:block;font-size:var(--fs-cap);font-weight:700;letter-spacing:-.01em;line-height:1.42}
   .cat-card .cap .sub{display:flex;justify-content:space-between;gap:10px;margin-top:9px;align-items:center}
-  .cat-card .cap .sub i{font-style:normal;font-family:var(--en);font-size:var(--fs-tag);letter-spacing:.14em;text-transform:uppercase;color:var(--red);background:rgba(200,53,43,.07);padding:4px 11px;border-radius:var(--pill)}
-  .cat-card .cap .sub u{text-decoration:none;font-family:var(--en);font-size:var(--fs-tag);letter-spacing:.08em;color:var(--gray);text-align:right}
+  .cat-card .cap .sub i{font-style:normal;font-family:var(--zh);font-size:var(--fs-tag);letter-spacing:.14em;text-transform:uppercase;color:var(--red);background:rgba(200,53,43,.07);padding:4px 11px;border-radius:var(--pill)}
+  .cat-card .cap .sub u{text-decoration:none;font-family:var(--zh);font-size:var(--fs-tag);letter-spacing:.08em;color:var(--gray);text-align:right}
   @media (max-width:900px){.cat-grid{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:520px){.cat-grid{grid-template-columns:1fr 1fr;gap:10px}.cat-card .frame{aspect-ratio:1/1}.cat-card .cap{padding:11px 12px 12px}.cat-card .cap .t{font-size:12.5px}.cat-card .cap .sub{margin-top:6px}.cat-card .cap .sub i,.cat-card .cap .sub u{font-size:10px;letter-spacing:.08em}}
 
@@ -146,14 +147,14 @@
   .sec-tags span{font-family:var(--en);font-size:10.5px;letter-spacing:.23em;color:var(--gray);font-weight:400;text-transform:uppercase}
   .sec-tags span:first-child{color:var(--red)}
   .sec-head h2{font-size:clamp(34px,4.7vw,var(--p-h2))}
-  .stack2{position:relative;line-height:1;font-family:var(--zh)}
+  .stack2{position:relative;line-height:1;font-family:var(--disp)}
   .stack2 .bgw{display:block;position:relative;z-index:1}
   .stack2 .bgw b{display:block;font-family:var(--en);font-weight:400;font-size:1.5em;line-height:1.0;letter-spacing:6px;color:transparent;-webkit-text-stroke:1px rgba(20,22,23,.34);white-space:nowrap}
   .stack2 .bgw b:last-child{padding-left:0}
   .stack2 .zh{position:absolute;left:0;top:50%;transform:translateY(-49%);z-index:2;font-size:1em;font-weight:var(--w-h1);letter-spacing:-.025em;white-space:nowrap}
   .stack2 .zh em{font-style:normal;color:var(--red)}
   .sec-head .sfoot{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-top:clamp(12px,1.4vw,18px)}
-  .sec-head .num{font-family:var(--en);font-size:10.5px;letter-spacing:.19em;color:var(--red);white-space:nowrap}
+  .sec-head .num{font-family:var(--zh);font-size:10.5px;letter-spacing:.19em;color:var(--red);white-space:nowrap}
   .sec-head .num b{font-size:10.5px;letter-spacing:.16em;font-weight:500}
   .sec-head .meta{font-family:var(--en);font-size:10.5px;letter-spacing:.17em;color:var(--gray);text-transform:uppercase;text-align:right;font-weight:var(--w-sm)}
   /* 角标：三块平行四边形 + 右下角朝左上的箭头 */
@@ -176,8 +177,8 @@
   .idx-row .no{font-family:var(--en);font-size:11px;letter-spacing:.13em;color:var(--gray)}
   .idx-row .tt{font-size:clamp(15px,1.5vw,20px);font-weight:700;letter-spacing:-.01em;transition:color .35s}
   .idx-row:hover .tt{color:var(--red)}
-  .idx-row .cat{font-family:var(--en);font-size:10.5px;letter-spacing:.21em;text-transform:uppercase;color:var(--gray);text-align:left}
-  .idx-row .n{font-family:var(--en);font-size:10.5px;letter-spacing:.13em;color:var(--gray);text-align:right}
+  .idx-row .cat{font-family:var(--zh);font-size:10.5px;letter-spacing:.21em;text-transform:uppercase;color:var(--gray);text-align:left}
+  .idx-row .n{font-family:var(--zh);font-size:10.5px;letter-spacing:.13em;color:var(--gray);text-align:right}
   .idx-row .bar{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:var(--red);transition:width .6s var(--ease)}
   .idx-row:hover .bar{width:100%}
 
@@ -232,8 +233,8 @@
   .work .cap .ttl b{font-size:var(--fs-cap);font-weight:700;letter-spacing:-.01em;line-height:1.42}
   .work .badge{position:absolute;right:12px;top:12px;z-index:3;font-family:var(--en);font-size:13px;letter-spacing:.06em;padding:6px 13px;border-radius:999px;background:rgba(255,255,255,.93);color:var(--ink);white-space:nowrap;box-shadow:0 4px 14px rgba(20,22,23,.16);backdrop-filter:blur(6px)}
   .work .cap .sub{display:flex;justify-content:space-between;gap:10px;margin-top:9px;align-items:center}
-  .work .cap .sub i{font-style:normal;font-family:var(--en);font-size:var(--fs-tag);letter-spacing:.14em;text-transform:uppercase;color:var(--red);background:rgba(200,53,43,.07);padding:4px 11px;border-radius:var(--pill)}
-  .work .cap .sub u{text-decoration:none;font-family:var(--en);font-size:var(--fs-tag);letter-spacing:.08em;color:var(--gray);text-align:right}
+  .work .cap .sub i{font-style:normal;font-family:var(--zh);font-size:var(--fs-tag);letter-spacing:.14em;text-transform:uppercase;color:var(--red);background:rgba(200,53,43,.07);padding:4px 11px;border-radius:var(--pill)}
+  .work .cap .sub u{text-decoration:none;font-family:var(--zh);font-size:var(--fs-tag);letter-spacing:.08em;color:var(--gray);text-align:right}
 
   /* ========== 详情 ========== */
   /* ══════ 09 · 作品详情页：大图、图集、上下篇 ══════ */
@@ -266,12 +267,12 @@
 .d-head{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:clamp(24px,3.2vw,48px);margin-top:clamp(28px,4vw,46px);align-items:start;position:relative;min-width:0}
 .d-ttl{position:relative;margin-bottom:clamp(10px,1.5vw,18px)}
 .d-ttl .en-big{display:block;font-family:var(--en);font-weight:400;font-size:var(--en-big,72px);line-height:.94;letter-spacing:4px;text-transform:uppercase;color:transparent;-webkit-text-stroke:1px rgba(20,22,23,.26);white-space:nowrap;margin-bottom:-.04em;pointer-events:none;user-select:none}
-.d-ttl h1{position:relative;z-index:1;font-family:var(--zh);font-size:clamp(32px,4.1vw,68px);font-weight:var(--w-h1);line-height:1.1;letter-spacing:-.022em}
+.d-ttl h1{position:relative;z-index:1;font-family:var(--disp);font-size:clamp(32px,4.1vw,68px);font-weight:var(--w-h1);line-height:1.1;letter-spacing:-.022em}
   .d-ttl h1 em{font-style:normal;color:var(--red)}
 .d-tags,.d-desc{position:relative;z-index:1}
 .d-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px}
 .d-tags span{font-size:10.5px;letter-spacing:.05em;padding:6px 12px;border:1px solid var(--line);color:var(--gray);border-radius:var(--pill);background:rgba(255,255,255,.6)}
-.d-desc p{font-size:13.5px;letter-spacing:.012em;color:#33363a;margin-bottom:14px;max-width:600px;line-height:1.92;text-align:justify;text-align-last:left}
+.d-desc p{font-size:13.5px;letter-spacing:.012em;color:#33363a;margin-bottom:14px;max-width:600px;line-height:1.72;letter-spacing:0;text-align:justify;text-align-last:left}
 .d-side{border:1px solid var(--line);background:var(--card);padding:20px 20px 12px;position:sticky;top:92px;border-radius:var(--r-lg)}
 .d-side .k{font-family:var(--en);font-size:9.5px;letter-spacing:.26em;color:var(--gray);text-transform:uppercase;margin-bottom:8px;display:block}
 .d-side .r{display:grid;grid-template-columns:92px minmax(0,1fr);gap:10px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line);font-size:12.5px;letter-spacing:.005em}
@@ -284,7 +285,7 @@
   .stream-flow a{display:block;line-height:0;text-align:center}
   .stream-flow img{display:block;width:30%;max-width:30%;height:auto;margin:0 auto;border:0;border-radius:0}
   .gal-top{display:flex;justify-content:space-between;align-items:baseline;gap:20px;margin-bottom:clamp(28px,4vw,44px);flex-wrap:wrap}
-  .gal-top h2{font-family:var(--zh);font-size:var(--fs-h2);font-weight:var(--w-h2);letter-spacing:-.005em}
+  .gal-top h2{font-family:var(--disp);font-size:var(--fs-h2);font-weight:var(--w-h2);letter-spacing:-.005em}
   .gal-top h2 small{font-family:var(--en);font-size:10px;letter-spacing:.33em;color:var(--gray);margin-left:14px;font-weight:400}
 .gal-top .hint{font-size:10.5px;color:var(--gray);font-family:var(--en);letter-spacing:.09em}
   .shots{display:flex;flex-wrap:wrap;gap:clamp(20px,2.4vw,40px) clamp(12px,1.6vw,24px)}
@@ -320,10 +321,10 @@
   /* ══════ 10 · 关于页：左侧文案 + 右侧形象照，两边并排 ══════ */
   .ab-hero{display:grid;grid-template-columns:minmax(0,1.66fr) minmax(200px,28%);gap:0 var(--ab-gap);align-items:end;margin-top:0;margin-bottom:0}
   .ab-copy{position:relative;z-index:2;display:flex;flex-direction:column;height:100%;justify-content:flex-start;padding-left:0}
-  .ab-copy h1{font-family:var(--zh);font-size:clamp(21px,3.4vw,42px);font-weight:var(--w-h1);line-height:1.3;letter-spacing:-.01em}
+  .ab-copy h1{font-family:var(--disp);font-size:clamp(21px,3.4vw,42px);font-weight:var(--w-h1);line-height:1.3;letter-spacing:-.01em}
   .ab-copy h1 em{font-style:normal;color:var(--red)}
-  .ab-copy .p{margin-top:clamp(18px,2.2vw,26px);max-width:min(100%,1000px);font-size:var(--fs-body);line-height:1.95;color:#3a3d41;text-align:justify;text-align-last:left}
-  .ab-copy .p + .p{margin-top:12px}
+  .ab-copy .p{margin-top:clamp(16px,2vw,23px);max-width:min(100%,1000px);font-size:var(--fs-body);line-height:1.70;letter-spacing:-.008em;color:#3a3d41;text-align:justify;text-align-last:left}
+  .ab-copy .p + .p{margin-top:17px}
   .ab-now{margin-top:0;padding:0 0 9px;border-top:0;border-bottom:1px solid var(--line);margin-bottom:clamp(30px,4vw,52px)}
   .ab-now .k{font-family:var(--en);font-size:10px;letter-spacing:.23em;color:var(--red);text-transform:uppercase;display:block;margin-bottom:8px}
   .ab-now p{font-size:12.5px;color:var(--gray);letter-spacing:.04em}
@@ -454,7 +455,7 @@
     .d-nav .next{text-align:left}
     .d-head h1{font-size:clamp(26px,7.4vw,34px);line-height:1.14;letter-spacing:-.02em}
     .d-ttl .en-big{font-size:min(var(--en-big,44px),30px);letter-spacing:2px;white-space:normal;line-height:1.05}
-    .d-desc p{font-size:12.5px;line-height:1.9;letter-spacing:.015em;margin-bottom:12px;max-width:none}
+    .d-desc p{font-size:12.5px;line-height:1.72;letter-spacing:0;margin-bottom:12px;max-width:none}
     .d-tags span{font-size:10px;padding:5px 10px}
     .d-side{padding:18px 16px 10px;margin-top:6px}
     .d-side .r{grid-template-columns:78px minmax(0,1fr);gap:8px;padding:8px 0;font-size:11.5px}
@@ -502,7 +503,7 @@
 .sec-tags{align-items:center}
 /* 作品索引标题下的引导条 */
 .idx-cue{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:clamp(14px,2vw,22px)}
-.idx-cue .cue{display:flex;align-items:center;gap:10px;font-family:var(--en);font-size:10.5px;letter-spacing:.23em;text-transform:uppercase;color:var(--gray)}
+.idx-cue .cue{display:flex;align-items:center;gap:10px;font-family:var(--zh);font-size:10.5px;letter-spacing:.23em;text-transform:uppercase;color:var(--gray)}
 .idx-cue .cue i{display:none}
 .idx-cue .cue-link{position:relative;display:inline-flex;align-items:center;gap:9px;font-family:var(--en);font-size:13px;letter-spacing:.19em;text-transform:uppercase;color:var(--red);padding-bottom:7px;cursor:pointer;transition:letter-spacing .45s cubic-bezier(.22,.8,.28,1),color .35s}
 .idx-cue .cue-link::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--red);transition:height .4s cubic-bezier(.22,.8,.28,1),background .35s}
@@ -545,7 +546,7 @@
   .p,.ab-copy .p,.d-desc p,.cap-row p,.job,.skills,.awards,.steps,.d-side .r b,
   .shot figcaption,.ab-facts .f b,.ab-now p,.foot-row{
     font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
-    font-weight:400;font-size:15px;line-height:1.78;letter-spacing:0
+    font-weight:400;font-size:15px;line-height:1.70;letter-spacing:-.006em
   }
   .d-desc p{margin-bottom:14px}
 
