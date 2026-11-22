@@ -210,9 +210,9 @@
   @media (max-width:760px){.cap-row{grid-template-columns:1fr;row-gap:6px}.cap-row p{grid-column:1}}
 
   /* ========== 作品网格（瀑布流） ========== */
-  .filter{display:grid;grid-template-columns:repeat(10,1fr);gap:8px;margin-bottom:clamp(26px,3vw,44px)}
-  .filter button{width:100%}
-  .filter button{font-family:inherit;font-size:12px;letter-spacing:.04em;padding:10px 18px;border:1px solid var(--line);background:rgba(255,255,255,.66);cursor:pointer;color:var(--gray);border-radius:var(--pill);transition:all .4s var(--ease);backdrop-filter:blur(8px)}
+  .filter{display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));gap:8px;margin-bottom:clamp(26px,3vw,44px)}
+  .filter button{width:100%;white-space:nowrap;overflow:hidden}
+  .filter button{font-family:inherit;font-size:12px;letter-spacing:.04em;padding:10px 14px;border:1px solid var(--line);background:rgba(255,255,255,.66);cursor:pointer;color:var(--gray);border-radius:var(--pill);transition:all .4s var(--ease);backdrop-filter:blur(8px)}
   .filter button:hover{color:var(--ink);border-color:var(--ink);background:#fff}
   .filter button.on{background:var(--ink);color:#fff;border-color:var(--ink);box-shadow:0 12px 26px rgba(20,22,23,.16)}
 
