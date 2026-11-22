@@ -685,10 +685,18 @@
 .cap-row h3 em{margin-top:-1px;line-height:1.2}
 .b-head h2 small{margin-top:-1px;line-height:1.15}
 .ab-facts .f span em{margin-top:-1px}
-.ab-facts .f b.lead1{grid-column:2}
+.ab-facts .f{grid-template-columns:118px auto 1fr}
+.ab-facts .f b.lead1{grid-column:2;grid-row:1}
 .ab-facts .f b.lead1,.ab-facts .f b.lead2{line-height:1.35;font-weight:700;color:var(--ink);letter-spacing:inherit;font-size:inherit;margin:0}
-.ab-facts .f b.lead2{grid-column:2;margin-top:1px}
-@media (max-width:640px){.ab-facts .f b.lead2{grid-column:2}}
+.ab-facts .f b.lead2{grid-column:3;grid-row:1;white-space:nowrap;margin-left:-13px}
+.ab-facts .f b.lead2::before{content:"· ";font-weight:700}
+@media (max-width:640px){
+  .ab-facts .f.edu{grid-template-columns:96px 1fr;align-items:start}
+  .ab-facts .f.edu span{grid-row:1/3}
+  .ab-facts .f.edu b.lead1{grid-column:2;grid-row:1;line-height:1.3}
+  .ab-facts .f.edu b.lead2{grid-column:2;grid-row:2;margin-left:0;line-height:1.25;margin-top:3px}
+  .ab-facts .f.edu b.lead2::before{content:none}
+}
 .job .t em i{margin-top:-1px;line-height:1.15}
 
 
@@ -1515,7 +1523,7 @@ function aboutView(){
         <div class="f rv"><span><i>姓名</i><em>Name</em></span><b>吴好玮 · 男 · 2005.09</b></div>
         <div class="f rv d1"><span><i>常住</i><em>Based</em></span><b>江西赣州</b></div>
         <div class="f rv d1"><span><i>学校</i><em>School</em></span><b>赣州职业技术学院</b></div>
-        <div class="f rv d2"><span><i>学历</i><em>Degree</em></span><b class="lead1">平面广告制作</b><b class="lead2">五年制预备技师 · 2021–2026</b></div>
+        <div class="f rv d2 edu"><span><i>学历</i><em>Degree</em></span><b class="lead1">平面广告制作</b><b class="lead2">五年制预备技师 · 2021–2026</b></div>
         <div class="f rv d2"><span><i>微信</i><em>WeChat</em></span><b>byunl_0649</b></div>
         <div class="f rv d3"><span><i>邮箱</i><em>Mail</em></span><b>wuhaowei59@gmail.com</b></div>
       </div>
