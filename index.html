@@ -1660,8 +1660,13 @@ function reflowMasonry(){
     box.appendChild(c);
     holders.push(c);
   }
-  // 按序号轮流分列：保证前 N 张（ZIPPO 组）依次出现在第一行，不被"最短列"打乱
-  cards.forEach((card,i)=>{ holders[i%cols].appendChild(card); });
+  // 前两行按序号铺满（ZIPPO 置顶），其余按最短列填充，避免某列被抽空留下大片空白
+  cards.forEach((card,i)=>{
+    if(i < cols * 2){ holders[i%cols].appendChild(card); return; }
+    let k=0, min=Infinity;
+    holders.forEach((h,j)=>{ const hh=h.offsetHeight; if(hh<min){ min=hh; k=j; } });
+    holders[k].appendChild(card);
+  });
   // 不再做底部 V 形错位：shapeTail 会把顶部卡片搬走，破坏 ZIPPO 置顶顺序
   observe();
 }
