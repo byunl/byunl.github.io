@@ -406,7 +406,7 @@
   .contact{padding:clamp(38px,5vw,76px) 0;border-top:1px solid var(--line)}
   .contact-head{margin-bottom:clamp(18px,2.4vw,34px)}
   .contact-head h2{font-size:clamp(34px,4.7vw,var(--p-h2));line-height:1;padding:8px 0 4px}
-  @media (max-width:640px){.contact-head h2{font-size:clamp(38px,11.4vw,52px)!important}}
+  @media (max-width:640px){.contact-head h2{font-size:clamp(26.6px,7.98vw,36.4px)!important}}
   .contact .hi{font-family:var(--en);font-size:10.5px;letter-spacing:.27em;text-transform:uppercase;color:var(--gray);margin-bottom:22px}
   .contact a.mail{display:inline-block;font-size:clamp(17px,2.6vw,30px);font-weight:700;letter-spacing:-.01em;line-height:1.2;border-bottom:2px solid transparent;transition:border-color .4s,color .4s}
   .contact a.mail:hover{color:var(--red);border-color:var(--red)}
@@ -449,14 +449,14 @@
   .filter{display:flex;flex-wrap:wrap}
   .filter button{width:auto}
     .sec-head{padding-top:14px}
-    .hero h1{font-size:clamp(34px,11vw,58px)}
+    .hero h1{font-size:clamp(26.6px,7.98vw,36.4px)}
     .hero h1 .bgw b{font-size:1.32em;-webkit-text-stroke:1.2px rgba(20,22,23,.32)}
     .sec-head .sfoot{margin-top:14px}
     .sec-head .meta{text-align:right}
     .idx-row{padding:14px 0}
     .d-nav{grid-template-columns:1fr}
     .d-nav .next{text-align:left}
-    .d-head h1{font-size:clamp(26px,7.4vw,34px);line-height:1.14;letter-spacing:-.02em}
+    .d-head h1{font-size:clamp(18.2px,5.18vw,23.8px);line-height:1.14;letter-spacing:-.02em}
     .d-ttl .en-big{font-size:min(var(--en-big,44px),30px);letter-spacing:2px;white-space:normal;line-height:1.05}
     .d-desc p{font-size:12.5px;line-height:1.72;letter-spacing:0;margin-bottom:12px;max-width:none}
     .d-tags span{font-size:10px;padding:5px 10px}
@@ -516,17 +516,19 @@
 .idx-cue .cue-link:hover .ar{transform:translateX(8px)}
 .idx-cue .cue-link:active .ar{transform:translateX(12px)}
   @media (max-width:700px){
-    .corner{width:44px;height:30px;top:79px}
-    .corner .rt{width:4px;height:16px}
-    .corner .rt:nth-child(1){right:16px}
-    .corner .rt:nth-child(2){right:9px}
-    .corner .rt:nth-child(3){right:2px}
-    .corner svg{display:none!important}
-    .sec-head .corner{width:84px;height:64px;top:70px}
-    .sec-head .corner svg{display:block!important}
-    .d-top .corner{width:40px;height:52px}
-    .hero h1 .corner{width:112px;height:86px;top:9px}
-    .hero h1 .corner svg{display:block!important}
+    .corner{width:40px;height:28px;top:0;visibility:hidden}
+    .corner .rt{width:3px;height:12px}
+    .corner .rt:nth-child(1){right:11px}
+    .corner .rt:nth-child(2){right:6px}
+    .corner .rt:nth-child(3){right:1px}
+    .corner svg{display:block!important;width:30px;height:18px;bottom:0}
+    .corner svg path{stroke-width:4}
+    .corner .rt,.sec-head .corner .rt,.hero h1 .corner .rt,.d-top .corner .rt{width:3px!important;height:12px!important;top:0!important;transform:skewX(-14deg)!important}
+    .corner .rt:nth-child(1),.sec-head .corner .rt:nth-child(1),.hero h1 .corner .rt:nth-child(1),.d-top .corner .rt:nth-child(1){right:11px!important}
+    .corner .rt:nth-child(2),.sec-head .corner .rt:nth-child(2),.hero h1 .corner .rt:nth-child(2),.d-top .corner .rt:nth-child(2){right:6px!important}
+    .corner .rt:nth-child(3),.sec-head .corner .rt:nth-child(3),.hero h1 .corner .rt:nth-child(3),.d-top .corner .rt:nth-child(3){right:1px!important}
+    .d-top .corner{width:34px;height:44px;top:0;visibility:visible}
+    .d-top .corner svg{display:none!important}
   }
 @media (max-width:700px){
   .idx-cue .cue-link{font-size:11.5px;letter-spacing:.11em;white-space:nowrap}
@@ -536,7 +538,7 @@
 
 /* ══════ 手机版排版层级（≤640px）：一二级标题特殊字体，正文系统黑体，字号/字重逐级拉开 ══════ */
 @media (max-width:640px){
-  .hero h1{font-size:clamp(38px,11.4vw,52px);font-weight:900;letter-spacing:-.025em;line-height:1.06}
+  .hero h1{font-size:clamp(26.6px,7.98vw,36.4px);font-weight:900;letter-spacing:-.025em;line-height:1.06}
   .sec-head h2{font-size:clamp(25px,7vw,32px);font-weight:800;letter-spacing:-.012em;line-height:1.12}
   .ab-copy h1{font-size:clamp(19px,5.4vw,25px);font-weight:700;line-height:1.38;letter-spacing:-.01em}
   .d-head h1{font-size:clamp(19px,5.1vw,23px);font-weight:700;line-height:1.24}
@@ -634,7 +636,13 @@
 .cat-card .cap .sub i,.work .cap .sub i{white-space:nowrap;letter-spacing:.06em;padding:4px 9px;text-transform:none}
 /* 手机一级标题与首页「视觉设计」同尺寸 */
 @media (max-width:640px){
-  .sec-head h2{font-size:clamp(38px,11.4vw,52px)!important}
+  .sec-head h2{font-size:clamp(26.6px,7.98vw,36.4px)!important}
+}
+/* ── 手机版：关掉所有进场位移/揭示动画，刷新不再"弹" ── */
+@media (max-width:640px){
+  .js .rv{opacity:1!important;transform:none!important;transition:none!important}
+  .js .mask{clip-path:none!important;transition:none!important}
+  #view.in{animation:none!important}
 }
 /* 标题与首图之间留白 */
 .d-head{margin-top:clamp(44px,6vw,78px)}
@@ -1700,7 +1708,20 @@ function shiftCorner(co, target, dy){
   if(isNaN(cur)) cur = co.offsetTop || 0;
   co.style.top = Math.round(cur + (tr.bottom - cr.bottom) + (dy || 0)) + 'px';
 }
+function alignCornersMobile(){
+  document.querySelectorAll('.corner').forEach(co=>{
+    const scope = co.closest('.hero h1') || co.closest('.sec-head');
+    if(!scope){ co.style.visibility='visible'; return; }
+    const anchor = scope.querySelector('.bgw') || scope.querySelector('h2') || scope;
+    const a = anchor.getBoundingClientRect();
+    const cur = parseFloat(getComputedStyle(co).top) || 0;
+    co.style.top = Math.round(cur + (a.top - co.getBoundingClientRect().top)) + 'px';
+    co.style.height = Math.round(a.height) + 'px';
+    co.style.visibility = 'visible';
+  });
+}
 function alignCorners(){
+  if(window.matchMedia('(max-width:640px)').matches){ alignCornersMobile(); return; }
   document.querySelectorAll('.sec-head .corner').forEach(co=>{
     const head = co.parentElement;
     const sf = head.querySelector('.sfoot');
@@ -2066,6 +2087,7 @@ router();
 /* 箭头底部对齐描边字底部：量差值直接设 bottom，不用 transform，不动画 */
 (function(){
   function align(){
+    if(window.matchMedia('(max-width:640px)').matches) return;
     document.querySelectorAll('.corner').forEach(function(c){
       var svg=c.querySelector('svg'); if(!svg) return;
       var scope=c.closest('.hero h1')||c.closest('.sec-head');
@@ -2087,6 +2109,7 @@ router();
 /* 角标对齐：红条顶部压描边字字形顶部；箭头底部压字形底部；两者都贴内容右边缘 */
 (function(){
   function align(){
+    if(window.matchMedia('(max-width:640px)').matches) return;
     document.querySelectorAll('.corner').forEach(function(c){
       var scope=c.closest('.hero h1')||c.closest('.sec-head');
       if(!scope) return;
