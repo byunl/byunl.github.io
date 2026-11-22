@@ -339,8 +339,8 @@
   .ab-figure img{position:absolute;inset:2.5% 0 0 0;z-index:2;display:block;width:100%;height:100%;object-fit:cover;object-position:50% 4%;margin:0}
   .ab-figure .cap{display:none}
   .ab-facts{display:grid;grid-template-columns:repeat(2,1fr);gap:0 clamp(24px,4vw,56px);border-top:1px solid var(--line)}
-  .ab-facts .f{display:grid;grid-template-columns:118px 1fr;gap:16px;padding:17px 0;border-bottom:1px solid var(--line);font-size:var(--fs-body)}
-  .ab-facts .f b{white-space:nowrap}
+  .ab-facts .f{display:grid;grid-template-columns:118px 1fr;gap:0 16px;padding:17px 0;border-bottom:1px solid var(--line);font-size:var(--fs-body)}
+  .ab-facts .f b{white-space:nowrap;line-height:1.52;font-weight:700;letter-spacing:inherit}
   .ab-facts .f span{display:flex;flex-direction:column;gap:3px;padding-top:1px;text-transform:none}
   .ab-facts .f span i{font-style:normal;font-family:var(--zh);font-size:12.5px;font-weight:600;letter-spacing:.08em;color:var(--ink)}
   .ab-facts .f span em{font-style:normal;font-family:var(--en);font-size:9px;font-weight:400;letter-spacing:.19em;text-transform:uppercase;color:rgba(20,22,23,.32)}
@@ -680,7 +680,9 @@
 .cap-row h3 em{margin-top:-1px;line-height:1.2}
 .b-head h2 small{margin-top:-1px;line-height:1.15}
 .ab-facts .f span em{margin-top:-1px}
-.ab-facts .f b.lead2{grid-column:2;font-weight:400;color:var(--ink);letter-spacing:0}
+.ab-facts .f b.lead1{grid-column:2}
+.ab-facts .f b.lead1,.ab-facts .f b.lead2{line-height:1.35;font-weight:700;color:var(--ink);letter-spacing:inherit;font-size:inherit;margin:0}
+.ab-facts .f b.lead2{grid-column:2;margin-top:1px}
 @media (max-width:640px){.ab-facts .f b.lead2{grid-column:2}}
 .job .t em i{margin-top:-1px;line-height:1.15}
 
@@ -1505,7 +1507,7 @@ function aboutView(){
         <div class="f rv"><span><i>姓名</i><em>Name</em></span><b>吴好玮 · 男 · 2005.09</b></div>
         <div class="f rv d1"><span><i>常住</i><em>Based</em></span><b>江西赣州</b></div>
         <div class="f rv d1"><span><i>学校</i><em>School</em></span><b>赣州职业技术学院</b></div>
-        <div class="f rv d2"><span><i>学历</i><em>Degree</em></span><b style="display:block">平面广告制作</b><b class="lead2">五年制预备技师 · 2021–2026</b></div>
+        <div class="f rv d2"><span><i>学历</i><em>Degree</em></span><b class="lead1">平面广告制作</b><b class="lead2">五年制预备技师 · 2021–2026</b></div>
         <div class="f rv d2"><span><i>微信</i><em>WeChat</em></span><b>byunl_0649</b></div>
         <div class="f rv d3"><span><i>邮箱</i><em>Mail</em></span><b>wuhaowei59@gmail.com</b></div>
       </div>
