@@ -404,7 +404,7 @@
 
   /* ========== 联系 ========== */
   .contact{padding:clamp(38px,5vw,76px) 0;border-top:1px solid var(--line)}
-  .contact-head{margin-bottom:clamp(18px,2.4vw,34px)}
+  .contact-head{margin-bottom:clamp(18px,2.4vw,34px);padding-top:0}
   .contact-head h2{font-size:clamp(34px,4.7vw,var(--p-h2));line-height:1;padding:8px 0 4px}
   @media (max-width:640px){.contact-head h2{font-size:clamp(26.6px,7.98vw,36.4px)!important}}
   .contact .hi{font-family:var(--en);font-size:10.5px;letter-spacing:.27em;text-transform:uppercase;color:var(--gray);margin-bottom:22px}
@@ -1202,8 +1202,14 @@ function titleEm(t){
 /* ============ 三页统一联系区块 ============ */
 function contactBlock(){
   return `
-  <div class="contact-head">
+  <div class="sec-head contact-head">
+    <div class="sec-tags"><span>04</span><span>—</span><span>CONTACT</span></div>
     <h2 class="stack2"><span class="bgw"><b>GET IN</b><b>TOUCH</b></span><span class="zh">联系<em>方式</em></span></h2>
+    <div class="sfoot">
+      <span class="num">WeChat · Mail · Full-time · Freelance</span>
+      <span class="meta">04 Lines</span>
+    </div>
+    <span class="corner"><i class="rt"></i><i class="rt"></i><i class="rt"></i><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 100 H100"/><path d="M0 100 V0"/><path d="M0 100 L100 0"/></svg></span>
   </div>
   <div class="foot">
     <div class="foot-top">
