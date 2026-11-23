@@ -1661,12 +1661,9 @@ function reflowMasonry(){
     box.appendChild(c);
     holders.push(c);
   }
-  // 前两行按序号铺满（ZIPPO 置顶），其余按最短列填充，避免某列被抽空留下大片空白
+  // 严格按清单序号轮转铺列：第 1 张进第 1 列、第 2 张进第 2 列……保证逐行阅读顺序与清单一致，不做最短列重排
   cards.forEach((card,i)=>{
-    if(i < cols * 2){ holders[i%cols].appendChild(card); return; }
-    let k=0, min=Infinity;
-    holders.forEach((h,j)=>{ const hh=h.offsetHeight; if(hh<min){ min=hh; k=j; } });
-    holders[k].appendChild(card);
+    holders[i%cols].appendChild(card);
   });
   // 不再做底部 V 形错位：shapeTail 会把顶部卡片搬走，破坏 ZIPPO 置顶顺序
   observe();
