@@ -270,7 +270,7 @@
 .d-tags,.d-desc{position:relative;z-index:1}
 .d-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px}
 .d-tags span{font-size:10.5px;letter-spacing:.05em;padding:6px 12px;border:1px solid var(--line);color:var(--gray);border-radius:var(--pill);background:rgba(255,255,255,.6)}
-.d-desc p{font-size:13.5px;letter-spacing:.012em;color:#33363a;margin-bottom:14px;max-width:600px;line-height:1.72;letter-spacing:0;text-align:justify;text-align-last:left}
+.d-desc p{font-size:13.5px;letter-spacing:.012em;color:#33363a;margin-bottom:14px;max-width:600px;line-height:1.72;letter-spacing:0;text-align:justify;text-align-last:left;text-wrap:pretty}
 .d-side{border:1px solid var(--line);background:var(--card);padding:20px 20px 12px;position:sticky;top:92px;border-radius:var(--r-lg)}
 .d-side .k{font-family:var(--en);font-weight:900;font-size:9.5px;letter-spacing:.26em;color:var(--gray);text-transform:uppercase;margin-bottom:8px;display:block}
 .d-side .r{display:grid;grid-template-columns:92px minmax(0,1fr);gap:10px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line);font-size:12.5px;letter-spacing:.005em}
@@ -323,6 +323,7 @@
   .ab-copy h1 em{font-style:normal;color:var(--red)}
   .ab-copy .p{margin-top:clamp(16px,2vw,23px);max-width:min(100%,1000px);font-size:var(--fs-body);line-height:1.70;letter-spacing:-.008em;color:#3a3d41;text-align:justify;text-align-last:left}
   .ab-copy .p + .p{margin-top:17px}
+  .ab-copy .p:last-of-type{max-width:min(100%,1032px);text-wrap:balance}
   .ab-now{margin-top:0;padding:0 0 9px;border-top:0;border-bottom:1px solid var(--line);margin-bottom:clamp(30px,4vw,52px)}
   .ab-now .k{font-family:var(--en);font-weight:900;font-size:10px;letter-spacing:.23em;color:var(--red);text-transform:uppercase;display:block;margin-bottom:8px}
   .ab-now p{font-size:12.5px;color:var(--gray);letter-spacing:.04em}
@@ -761,7 +762,7 @@
 .foot-top{padding-top:clamp(10px,1.2vw,16px)}
 .foot-row{font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
   line-height:1.35;gap:4px clamp(16px,2.2vw,36px);margin-top:clamp(9px,1.1vw,13px);
-  font-size:var(--fs-h2);font-weight:var(--w-h2);letter-spacing:0}
+  font-size:var(--fs-h2);font-weight:500;letter-spacing:0}
 .foot-row i{font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;font-weight:var(--w-h2);font-size:var(--fs-h2);letter-spacing:.02em}
 .partners{margin-top:clamp(12px,1.4vw,18px);padding-top:clamp(10px,1.2vw,14px)}
 
@@ -1519,11 +1520,11 @@ function aboutView(){
       <div class="ab-hero">
         <div class="ab-copy">
           <h1 class="rv">把复杂的事，<br>做得<em>干净</em>。</h1>
-          <p class="p rv d1">做设计先把信息摊开，定调性、版式骨架、字阶和留白，再收成一张图。间距、对齐、字重这些细节会反复核，改到自己看着顺为止。</p>
-          <p class="p rv d1">2025.09—2026.06 在赣州万岛电子商务实习，做 ZIPPO 眼镜品类视觉。主图、SKU 图、详情长图和大促物料都由我跟完，拍摄、抠图精修、镜片反光与金属质感处理、平台尺寸、上新排期也都在我手上。眼镜吃细节，镜腿高光没处理好，整张图就显便宜。</p>
-          <p class="p rv d1">此前两年做外包和自由接单：顾尚传媒（2023.06—2025.07）设计外包，潞珂网络（2024—2025）自由设计师。做过品牌视觉、包装、UI 界面和 3D 建模，也跟过整套 VI 的落地物料，改稿、对接、印刷跟单都自己来。</p>
-          <p class="p rv d2">赣州职业技术学院 · 平面广告制作 · 2021—2026，五年制预备技师，专业成绩连续两学年年级第一。2023—2024 国家奖学金；2023.02 文创大赛个人一等奖、团队二等奖；2023.12 振兴杯省级三级；2024 廉洁主题校级优秀奖两件。</p>
-          <p class="p rv d2">常用 Photoshop、Illustrator、InDesign，会 3ds Max 和 CAD。印刷懂出血、色差与工艺，包装懂刀模与结构。近两年把 AI 工具接进流程，用在提案阶段试方向。画了八年画，造型和色彩是底子，构图先算再画。现在找平面 / 视觉设计的全职。</p>
+          <p class="p rv d1">熟练 Photoshop、Illustrator、InDesign，掌握 3ds Max、CAD；懂印刷出血、色差工艺以及包装刀模结构，会借助 AI 工具辅助提案构思，具备多年绘画功底，擅长造型、色彩与构图。</p>
+          <p class="p rv d1">2025.09—2026.06 赣州万岛电子商务实习，ZIPPO 眼镜品类电商视觉。优势：可独立全流程负责电商视觉产出，兼顾拍摄修图、物料制作、平台规范与上新排期，注重产品质感细节把控。独立跟进主图、SKU 图、详情页、大促物料；负责拍摄、抠图精修、金属镜片质感处理，适配平台尺寸、跟进上新排期。眼镜看重细节，高光处理不到位，图片质感就会变差。</p>
+          <p class="p rv d1">此前两年做外包及自由设计：2023.06—2023.10 顾尚传媒设计外包，2023.06—2025.07 潞珂网络自由设计师。优势：多品类项目经验，独立对接客户、改稿、印刷跟单，能够完成整套 VI 落地执行。经手品牌视觉、包装、UI 界面、3D 建模类项目。</p>
+          <p class="p rv d2">赣州职业技术学院｜平面广告制作 2021—2026，五年制预备技师。累计斩获 5 项重要奖项：国家奖学金、文创大赛个人一等奖 + 团队二等奖、振兴杯职业技能三级、廉洁主题双作品校级优秀奖。</p>
+          <p class="p rv d2">做设计先梳理需求，确定风格、版式框架、文字层级与留白，再输出成品。反复核对间距、对齐、字重等细节，调整至效果达标，寻求平面 / 视觉设计全职岗位。</p>
         </div>
         <figure class="ab-figure rv d1">
           <span class="wm wu">WU</span>
@@ -1571,12 +1572,12 @@ function aboutView(){
           </div>
         </div>
         <div class="job rv d1">
-<div class="t"><div class="row"><b>潞珂网络</b><span class="when">2024 — 2025</span></div><em>自由设计师<i>Freelance Designer</i></em>
+<div class="t"><div class="row"><b>潞珂网络</b><span class="when">2023.06 — 2025.07</span></div><em>自由设计师<i>Freelance Designer</i></em>
             <ul><li>独立承接品牌、平面、UI、3D 等多领域订单，与客户沟通需求后完成方案并交付。</li></ul>
           </div>
         </div>
         <div class="job rv d2">
-<div class="t"><div class="row"><b>顾尚传媒</b><span class="when">2023.06 — 2025.07</span></div><em>设计外包<i>Design Outsourcing</i></em>
+<div class="t"><div class="row"><b>顾尚传媒</b><span class="when">2023.06 — 2023.10</span></div><em>设计外包<i>Design Outsourcing</i></em>
             <ul><li>承接品牌、平面、UI 类外包任务，按客户需求完成视觉产出。</li></ul>
           </div>
         </div>
@@ -2171,7 +2172,10 @@ router();
     now.style.marginTop='0px';
     var ib=img.getBoundingClientRect().bottom, fb=fig.getBoundingClientRect().bottom;
     var nh=now.offsetHeight;
-    now.style.marginTop=Math.round(ib-nh-fb)+'px';
+    var ps=document.querySelectorAll('.ab-copy .p');
+    var tb=ps.length?ps[ps.length-1].getBoundingClientRect().bottom:0;
+    var top=Math.max(ib-nh, tb+10);
+    now.style.marginTop=Math.round(top-fb)+'px';
   }
   placeNow();
   window.addEventListener('resize',placeNow);
