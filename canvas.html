@@ -339,13 +339,13 @@
   .ab-copy{position:relative;z-index:2;display:flex;flex-direction:column;height:100%;justify-content:flex-start;padding-left:0}
   .ab-copy h1{font-family:var(--disp);font-size:clamp(21px,3.4vw,42px);font-weight:var(--w-h1);line-height:1.3;letter-spacing:-.01em}
   .ab-copy h1 em{font-style:normal;color:var(--red)}
-  .ab-copy .p{margin-top:clamp(16px,2vw,23px);max-width:min(100%,1000px);font-size:var(--fs-body);line-height:1.70;letter-spacing:-.008em;color:#3a3d41;text-align:justify;text-align-last:left}
+  .ab-copy .p{margin-top:clamp(16px,2vw,23px);max-width:min(100%,1000px);font-size:var(--fs-body);line-height:1.60;letter-spacing:-.008em;color:#3a3d41;text-align:justify;text-align-last:left}
   .ab-copy .p + .p{margin-top:17px}
-  .ab-copy .p:last-of-type{max-width:min(100%,1032px);line-height:1.62;text-wrap:pretty}
+  .ab-copy .p:last-of-type{max-width:min(100%,1032px);line-height:1.56;text-wrap:pretty}
 
   /* 正文内容板块：整块相对标题右移一档，首行缩进两个汉字；字号/字重/颜色不变，标题与装饰字不动 */
   .ab-copy .p,.d-desc p,.cap-row p,.step p,.job .t ul,.ab-now p,.shot figcaption{margin-left:1em}
-  .ab-copy .p,.d-desc p,.cap-row p,.step p,.ab-now p,.shot figcaption{text-indent:2em}
+  .ab-copy .p,.d-desc p,.ab-now p,.shot figcaption{text-indent:2em}
   .job .t li{padding-left:2em}
   .contact .foot{margin-left:1em}
   .ab-now{margin-top:0;padding:0 0 9px;border-top:0;border-bottom:1px solid var(--line);margin-bottom:clamp(30px,4vw,52px)}
@@ -733,7 +733,7 @@
 .ab-facts .f b.lead2{grid-column:3;grid-row:1;white-space:nowrap;margin-left:-13px}
 .ab-facts .f b.lead2::before{content:"· ";font-weight:700}
 @media (max-width:640px){
-  .ab-facts .f.edu{grid-template-columns:96px 1fr;align-items:start}
+  .ab-facts .f.edu{grid-template-columns:118px 1fr;align-items:start}
   .ab-facts .f.edu span{grid-row:1/3}
   .ab-facts .f.edu b.lead1{grid-column:2;grid-row:1;line-height:1.3}
   .ab-facts .f.edu b.lead2{grid-column:2;grid-row:2;margin-left:0;line-height:1.25;margin-top:3px}
@@ -1236,7 +1236,7 @@ function homeView(){
   return `
   <section class="hero" data-el="首页首屏">
     <!-- 顶部信息条：左「名字 / 头衔」，右「起始年份 — 城市」 -->
-    <div class="hero-top" data-el="顶部信息条"><span>WU HAOWEI / 平面视觉设计师</span><span>EST. 2005 — GANZHOU, CN</span></div>
+    <div class="hero-top" data-el="顶部信息条"><span>WU HAOWEI / 平面视觉设计师</span></div>
     <div class="hero-main" data-el="首屏主内容">
 
       <!-- ┌──────────────────────────────────────────────┐
@@ -1498,11 +1498,11 @@ function aboutView(){
       <div class="ab-hero">
         <div class="ab-copy">
           <h1 class="rv">把复杂的事，<br>做得<em>干净</em>。</h1>
-          <p class="p rv d1">熟练 Photoshop、Illustrator、InDesign，掌握 3ds Max、CAD；懂印刷出血、色差工艺以及包装刀模结构，会借助 AI 工具辅助提案构思，具备多年绘画功底，擅长造型、色彩与构图。</p>
-          <p class="p rv d1">2025.09—2026.06 赣州万岛电子商务实习，ZIPPO 眼镜品类电商视觉。优势：可独立全流程负责电商视觉产出，兼顾拍摄修图、物料制作、平台规范与上新排期，注重产品质感细节把控。独立跟进主图、SKU 图、详情页、大促物料；负责拍摄、抠图精修、金属镜片质感处理，适配平台尺寸、跟进上新排期。眼镜看重细节，高光处理不到位，图片质感就会变差。</p>
-          <p class="p rv d1">此前两年做外包及自由设计：2023.06—2023.10 顾尚传媒设计外包，2023.06—2025.07 潞珂网络自由设计师。优势：多品类项目经验，独立对接客户、改稿、印刷跟单，能够完成整套 VI 落地执行。经手品牌视觉、包装、UI 界面、3D 建模类项目。</p>
-          <p class="p rv d2">江西赣州技师学院｜计算机广告制作 2021–2026，预备技师（比照本科学历待遇）。累计斩获 5 项重要奖项：国家奖学金、文创大赛个人一等奖 + 团队二等奖、振兴杯职业技能三级、廉洁主题双作品校级优秀奖。</p>
-          <p class="p rv d2">做设计先梳理需求，确定风格、版式框架、文字层级与留白，再输出成品。反复核对间距、对齐、字重等细节，调整至效果达标，寻求平面 / 视觉设计全职岗位。</p>
+          <p class="p rv d1">熟练 Photoshop、Illustrator、InDesign，掌握 3ds Max、CAD；了解印刷出血、色差工艺与包装刀模结构，能用 AI 工具辅助提案；有多年绘画功底，擅长造型、色彩与构图。</p>
+          <p class="p rv d1">2025.09—2026.06 在赣州万岛电子商务实习，负责 ZIPPO 眼镜品类电商视觉。可独立走完拍摄、抠图精修到主图、SKU 图、详情页与大促物料的全流程，兼顾物料制作、平台规范与上新排期；眼镜类目吃细节，高光和镜片金属质感不到位，图片就立不住。</p>
+          <p class="p rv d1">此前两年做外包和自由设计，多品类项目都有接触：2023.06—2023.10 顾尚传媒外包，2023.06—2025.07 潞珂网络自由设计师。独立对接客户、改稿、印刷跟单，经手品牌 VI、包装、UI 界面与 3D 建模项目，能完成整套 VI 落地。</p>
+          <p class="p rv d2">江西赣州技师学院｜计算机广告制作 2021–2026，预备技师（比照本科学历待遇）。在校获 5 项奖项：国家奖学金、文创大赛个人一等奖与团队二等奖、振兴杯职业技能三级、廉洁主题双作品校级优秀奖。</p>
+          <p class="p rv d2">动手前先理清需求，定好风格、版式框架、文字层级与留白，再出成品；成稿前反复核对间距、对齐和字重，调到效果达标。现寻求平面 / 视觉设计全职岗位。</p>
         </div>
         <figure class="ab-figure rv d1">
           <span class="wm wu">WU</span>
