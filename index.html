@@ -822,61 +822,6 @@
 
 <main id="view" data-el="内容容器"></main>
 
-<!-- 素材预加载清单：供发布打包扫描本地图片，页面不可见 -->
-<div style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
-  <img src="assets/zc_01.webp" alt="" loading="lazy">
-  <img src="assets/zc_02.webp" alt="" loading="lazy">
-  <img src="assets/zc_03.webp" alt="" loading="lazy">
-  <img src="assets/zc_04.webp" alt="" loading="lazy">
-  <img src="assets/zc_05.webp" alt="" loading="lazy">
-  <img src="assets/zc_06.webp" alt="" loading="lazy">
-  <img src="assets/zc_07.webp" alt="" loading="lazy">
-  <img src="assets/zc_08.webp" alt="" loading="lazy">
-  <img src="assets/zc_09.webp" alt="" loading="lazy">
-  <img src="assets/zc_10.webp" alt="" loading="lazy">
-  <img src="assets/zc_11.webp" alt="" loading="lazy">
-  <img src="assets/zc_12.webp" alt="" loading="lazy">
-  <img src="assets/zc_13.webp" alt="" loading="lazy">
-  <img src="assets/zc_14.webp" alt="" loading="lazy">
-  <img src="assets/zc_15.webp" alt="" loading="lazy">
-  <img src="assets/zc_16.webp" alt="" loading="lazy">
-  <img src="assets/zc_17.webp" alt="" loading="lazy">
-  <img src="assets/zc_18.webp" alt="" loading="lazy">
-  <img src="assets/zc_19.webp" alt="" loading="lazy">
-  <img src="assets/zc_20.webp" alt="" loading="lazy">
-  <img src="assets/zc_21.webp" alt="" loading="lazy">
-  <img src="assets/zc_22.webp" alt="" loading="lazy">
-  <img src="assets/zc_23.webp" alt="" loading="lazy">
-  <img src="assets/zc_24.webp" alt="" loading="lazy">
-  <img src="assets/zc_25.webp" alt="" loading="lazy">
-  <img src="assets/zc_26.webp" alt="" loading="lazy">
-  <img src="assets/zc_27.webp" alt="" loading="lazy">
-  <img src="assets/zc_28.webp" alt="" loading="lazy">
-  <img src="assets/zc_29.webp" alt="" loading="lazy">
-  <img src="assets/zc_30.webp" alt="" loading="lazy">
-  <img src="assets/zc_31.webp" alt="" loading="lazy">
-  <img src="assets/zo_1.webp" alt="" loading="lazy">
-  <img src="assets/zo_2.webp" alt="" loading="lazy">
-  <img src="assets/zo_3.webp" alt="" loading="lazy">
-  <img src="assets/zo_4.webp" alt="" loading="lazy">
-  <img src="assets/zo_5.webp" alt="" loading="lazy">
-  <img src="assets/zo_6.webp" alt="" loading="lazy">
-  <img src="assets/zo_7.webp" alt="" loading="lazy">
-  <img src="assets/zo_8.webp" alt="" loading="lazy">
-  <img src="assets/zo_9.webp" alt="" loading="lazy">
-  <img src="assets/zs_1.webp" alt="" loading="lazy">
-  <img src="assets/zs_2.webp" alt="" loading="lazy">
-  <img src="assets/zs_3.webp" alt="" loading="lazy">
-  <img src="assets/zs_4.webp" alt="" loading="lazy">
-  <img src="assets/zs_5.webp" alt="" loading="lazy">
-  <img src="assets/zs_6.webp" alt="" loading="lazy">
-  <img src="assets/zs_7.webp" alt="" loading="lazy">
-  <img src="assets/zs_8.webp" alt="" loading="lazy">
-  <img src="assets/zs_9.webp" alt="" loading="lazy">
-
-
-</div>
-
 <script>
 document.body.classList.add('js');
 
@@ -1335,7 +1280,7 @@ function homeView(){
             print:['印刷 / 物料','Print','assets/r_handbook1.webp']}[k];
           const n=WORKS.filter(w=>w.cat===k).length;
           return `<a class="cat-card rv d${(i%4)+1}" href="#/works?cat=${k}">
-            <span class="frame"><img src="${meta[2]}" alt="${meta[0]}" loading="lazy"></span>
+            <span class="frame"><img src="${meta[2].replace('assets/','assets/thumbs/')}" alt="${meta[0]}" loading="lazy" decoding="async"></span>
             <span class="cap">
               <span class="t">${meta[0]}</span>
               <span class="sub"><i>${n}组</i><u>${meta[1]} ↗</u></span>
@@ -1431,7 +1376,7 @@ function workCard(w,i){
   const ar = AR[w.id] || 1.2;
   return `<a class="work rv" href="#/work/${w.id}" style="--ar:${ar}">
     <div class="frame">
-      <img src="${w.imgs[0]}" alt="${w.title}" loading="lazy">
+      <img src="${w.imgs[0].replace('assets/','assets/thumbs/')}" alt="${w.title}" loading="lazy" decoding="async" fetchpriority="low">
       ${w.imgs.length>1?`<span class="badge">${w.imgs.length} 张</span>`:''}
       <div class="cue"><b>查看项目</b><span>${String(w.id).padStart(2,'0')} ↗</span></div>
     </div>
@@ -1866,168 +1811,6 @@ router();
 
 
 
-
-<div id="preload" style="position:absolute;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none" aria-hidden="true">
-  <img src="assets/b_abalone_1.webp" alt="" loading="lazy">
-  <img src="assets/b_abalone_2.webp" alt="" loading="lazy">
-  <img src="assets/b_logo_cheng_a.webp" alt="" loading="lazy">
-  <img src="assets/b_logo_cheng_b.webp" alt="" loading="lazy">
-  <img src="assets/b_pack_o1.webp" alt="" loading="lazy">
-  <img src="assets/b_pack_o2.webp" alt="" loading="lazy">
-  <img src="assets/b_pack_o3.webp" alt="" loading="lazy">
-  <img src="assets/b_pack_o4.webp" alt="" loading="lazy">
-  <img src="assets/b_pack_o5.webp" alt="" loading="lazy">
-  <img src="assets/cd_back.webp" alt="" loading="lazy">
-  <img src="assets/cd_cover.webp" alt="" loading="lazy">
-  <img src="assets/cd_front.webp" alt="" loading="lazy">
-  <img src="assets/e_hero1.webp" alt="" loading="lazy">
-  <img src="assets/e_hero2.webp" alt="" loading="lazy">
-  <img src="assets/e_milk.webp" alt="" loading="lazy">
-  <img src="assets/h_collage.webp" alt="" loading="lazy">
-  <img src="assets/h_kimono2.webp" alt="" loading="lazy">
-  <img src="assets/l_shexiaolian.webp" alt="" loading="lazy">
-  <img src="assets/l_xingyou.webp" alt="" loading="lazy">
-  <img src="assets/n_earth.webp" alt="" loading="lazy">
-  <img src="assets/n_exhibit.webp" alt="" loading="lazy">
-  <img src="assets/n_fangou.webp" alt="" loading="lazy">
-  <img src="assets/n_fitweb.webp" alt="" loading="lazy">
-  <img src="assets/n_fitweb2.webp" alt="" loading="lazy">
-  <img src="assets/n_gate.webp" alt="" loading="lazy">
-  <img src="assets/n_jianguo.webp" alt="" loading="lazy">
-  <img src="assets/n_lib.webp" alt="" loading="lazy">
-  <img src="assets/n_memory.webp" alt="" loading="lazy">
-  <img src="assets/n_museum.webp" alt="" loading="lazy">
-  <img src="assets/n_museum3d.webp" alt="" loading="lazy">
-  <img src="assets/n_music_1.webp" alt="" loading="lazy">
-  <img src="assets/n_music_2.webp" alt="" loading="lazy">
-  <img src="assets/n_order.webp" alt="" loading="lazy">
-  <img src="assets/n_qinglian.webp" alt="" loading="lazy">
-  <img src="assets/n_tanaka.webp" alt="" loading="lazy">
-  <img src="assets/n_tea.webp" alt="" loading="lazy">
-  <img src="assets/n_web2.webp" alt="" loading="lazy">
-  <img src="assets/p_afonso.webp" alt="" loading="lazy">
-  <img src="assets/p_calado.webp" alt="" loading="lazy">
-  <img src="assets/p_canva1.webp" alt="" loading="lazy">
-  <img src="assets/p_canva2.webp" alt="" loading="lazy">
-  <img src="assets/p_canva3.webp" alt="" loading="lazy">
-  <img src="assets/p_double12.webp" alt="" loading="lazy">
-  <img src="assets/p_feel.webp" alt="" loading="lazy">
-  <img src="assets/p_food.webp" alt="" loading="lazy">
-  <img src="assets/p_halloween.webp" alt="" loading="lazy">
-  <img src="assets/p_lemon.webp" alt="" loading="lazy">
-  <img src="assets/p_logo_cheng.webp" alt="" loading="lazy">
-  <img src="assets/p_logo_if.webp" alt="" loading="lazy">
-  <img src="assets/p_logo_orange.webp" alt="" loading="lazy">
-  <img src="assets/p_logo_pingxiang.webp" alt="" loading="lazy">
-  <img src="assets/p_logo_pipa.webp" alt="" loading="lazy">
-  <img src="assets/p_mary.webp" alt="" loading="lazy">
-  <img src="assets/p_may.webp" alt="" loading="lazy">
-  <img src="assets/p_opera_1.webp" alt="" loading="lazy">
-  <img src="assets/p_opera_2.webp" alt="" loading="lazy">
-  <img src="assets/p_pack_orange.webp" alt="" loading="lazy">
-  <img src="assets/p_pack_tea.webp" alt="" loading="lazy">
-  <img src="assets/p_pinkblue.webp" alt="" loading="lazy">
-  <img src="assets/p_snow.webp" alt="" loading="lazy">
-  <img src="assets/p_songcity1.webp" alt="" loading="lazy">
-  <img src="assets/p_songcity2.webp" alt="" loading="lazy">
-  <img src="assets/p_sports.webp" alt="" loading="lazy">
-  <img src="assets/p_type2024.webp" alt="" loading="lazy">
-  <img src="assets/p_yoasobi.webp" alt="" loading="lazy">
-  <img src="assets/pc_01.webp" alt="" loading="lazy">
-  <img src="assets/pc_02.webp" alt="" loading="lazy">
-  <img src="assets/pc_03.webp" alt="" loading="lazy">
-  <img src="assets/pc_04.webp" alt="" loading="lazy">
-  <img src="assets/pc_05.webp" alt="" loading="lazy">
-  <img src="assets/pc_06.webp" alt="" loading="lazy">
-  <img src="assets/pc_07.webp" alt="" loading="lazy">
-  <img src="assets/pc_08.webp" alt="" loading="lazy">
-  <img src="assets/pc_front_a3.webp" alt="" loading="lazy">
-  <img src="assets/pc_front_court.webp" alt="" loading="lazy">
-  <img src="assets/pc_front_gate.webp" alt="" loading="lazy">
-  <img src="assets/pc_front_lib.webp" alt="" loading="lazy">
-  <img src="assets/portrait.webp" alt="" loading="lazy">
-  <img src="assets/r_handbook1.webp" alt="" loading="lazy">
-  <img src="assets/r_handbook2.webp" alt="" loading="lazy">
-  <img src="assets/r_handbook3.webp" alt="" loading="lazy">
-  <img src="assets/s_weifamily.webp" alt="" loading="lazy">
-  <img src="assets/t_book.webp" alt="" loading="lazy">
-  <img src="assets/t_first.webp" alt="" loading="lazy">
-  <img src="assets/t_paradox.webp" alt="" loading="lazy">
-  <img src="assets/w_art_grey.webp" alt="" loading="lazy">
-  <img src="assets/w_art_color.webp" alt="" loading="lazy">
-  <img src="assets/w_bedding_1.webp" alt="" loading="lazy">
-  <img src="assets/w_bedding_2.webp" alt="" loading="lazy">
-  <img src="assets/w_bedding_3.webp" alt="" loading="lazy">
-  <img src="assets/w_clone.webp" alt="" loading="lazy">
-  <img src="assets/w_croissant.webp" alt="" loading="lazy">
-  <img src="assets/w_flower_1.webp" alt="" loading="lazy">
-  <img src="assets/w_flower_2.webp" alt="" loading="lazy">
-  <img src="assets/work3.webp" alt="" loading="lazy">
-  <img src="assets/work4.webp" alt="" loading="lazy">
-  <img src="assets/work5.webp" alt="" loading="lazy">
-  <img src="assets/work6.webp" alt="" loading="lazy">
-  <img src="assets/z_carbon_hero.webp" alt="" loading="lazy">
-  <img src="assets/z_carbon_model.webp" alt="" loading="lazy">
-  <img src="assets/z_insert_1.webp" alt="" loading="lazy">
-  <img src="assets/z_insert_2.webp" alt="" loading="lazy">
-  <img src="assets/z_insert_3.webp" alt="" loading="lazy">
-  <img src="assets/z_insert_4.webp" alt="" loading="lazy">
-  <img src="assets/z_insert_5.webp" alt="" loading="lazy">
-  <img src="assets/z_insert_6.webp" alt="" loading="lazy">
-  <img src="assets/z_insert_7.webp" alt="" loading="lazy">
-  <img src="assets/z_oval_hero.webp" alt="" loading="lazy">
-  <img src="assets/z_polar_hd.webp" alt="" loading="lazy">
-  <img src="assets/z_square_hero.webp" alt="" loading="lazy">
-  <img src="assets/zc_01.webp" alt="" loading="lazy">
-  <img src="assets/zc_02.webp" alt="" loading="lazy">
-  <img src="assets/zc_03.webp" alt="" loading="lazy">
-  <img src="assets/zc_04.webp" alt="" loading="lazy">
-  <img src="assets/zc_05.webp" alt="" loading="lazy">
-  <img src="assets/zc_06.webp" alt="" loading="lazy">
-  <img src="assets/zc_07.webp" alt="" loading="lazy">
-  <img src="assets/zc_08.webp" alt="" loading="lazy">
-  <img src="assets/zc_09.webp" alt="" loading="lazy">
-  <img src="assets/zc_10.webp" alt="" loading="lazy">
-  <img src="assets/zc_11.webp" alt="" loading="lazy">
-  <img src="assets/zc_12.webp" alt="" loading="lazy">
-  <img src="assets/zc_13.webp" alt="" loading="lazy">
-  <img src="assets/zc_14.webp" alt="" loading="lazy">
-  <img src="assets/zc_15.webp" alt="" loading="lazy">
-  <img src="assets/zc_16.webp" alt="" loading="lazy">
-  <img src="assets/zc_17.webp" alt="" loading="lazy">
-  <img src="assets/zc_18.webp" alt="" loading="lazy">
-  <img src="assets/zc_19.webp" alt="" loading="lazy">
-  <img src="assets/zc_20.webp" alt="" loading="lazy">
-  <img src="assets/zc_21.webp" alt="" loading="lazy">
-  <img src="assets/zc_22.webp" alt="" loading="lazy">
-  <img src="assets/zc_23.webp" alt="" loading="lazy">
-  <img src="assets/zc_24.webp" alt="" loading="lazy">
-  <img src="assets/zc_25.webp" alt="" loading="lazy">
-  <img src="assets/zc_26.webp" alt="" loading="lazy">
-  <img src="assets/zc_27.webp" alt="" loading="lazy">
-  <img src="assets/zc_28.webp" alt="" loading="lazy">
-  <img src="assets/zc_29.webp" alt="" loading="lazy">
-  <img src="assets/zc_30.webp" alt="" loading="lazy">
-  <img src="assets/zc_31.webp" alt="" loading="lazy">
-  <img src="assets/zo_1.webp" alt="" loading="lazy">
-  <img src="assets/zo_2.webp" alt="" loading="lazy">
-  <img src="assets/zo_3.webp" alt="" loading="lazy">
-  <img src="assets/zo_4.webp" alt="" loading="lazy">
-  <img src="assets/zo_5.webp" alt="" loading="lazy">
-  <img src="assets/zo_6.webp" alt="" loading="lazy">
-  <img src="assets/zo_7.webp" alt="" loading="lazy">
-  <img src="assets/zo_8.webp" alt="" loading="lazy">
-  <img src="assets/zo_9.webp" alt="" loading="lazy">
-  <img src="assets/zs_1.webp" alt="" loading="lazy">
-  <img src="assets/zs_2.webp" alt="" loading="lazy">
-  <img src="assets/zs_3.webp" alt="" loading="lazy">
-  <img src="assets/zs_4.webp" alt="" loading="lazy">
-  <img src="assets/zs_5.webp" alt="" loading="lazy">
-  <img src="assets/zs_6.webp" alt="" loading="lazy">
-  <img src="assets/zs_7.webp" alt="" loading="lazy">
-  <img src="assets/zs_8.webp" alt="" loading="lazy">
-  <img src="assets/zs_9.webp" alt="" loading="lazy">
-</div>
 
 <script>
 /* 实时调参面板：只影响本机预览，不写入代码；调完"复制参数"发我即可固化 */
