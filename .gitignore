@@ -1,3 +1,10 @@
 CNAME
 index.html.pre_h1fix
 .DS_Store
+
+# 未被 HTML 引用的旧素材，仅保留本地磁盘，不入库
+assets/r_handbook2.webp
+assets/r_handbook3.webp
+assets/work5.webp
+assets/thumbs/work5.webp
+assets/zb5188_02.webp
