@@ -257,11 +257,11 @@
   .d-top .corner svg{transform:translateY(-9px) scaleX(.8) scaleY(-.8)}
   .d-top .corner svg path{stroke-width:5}
   .d-split{display:block}
-  .d-split.tall{display:grid;grid-template-columns:minmax(0,.94fr) minmax(0,.86fr);gap:clamp(26px,3.6vw,58px);align-items:start}
-  .d-split.tall .d-hero{margin:0;padding:0;align-self:start;background:transparent;border:0;border-radius:0;display:block}
-  .d-split.tall .d-hero img{max-height:none;width:100%;height:auto;object-fit:contain}
-  .d-split.tall .d-head{grid-template-columns:minmax(0,1fr);margin-top:0;gap:26px}
-  .d-split.tall .d-side{position:static}
+  .d-split.side{display:grid;grid-template-columns:minmax(0,.94fr) minmax(0,.86fr);gap:clamp(26px,3.6vw,58px);align-items:stretch}
+  .d-split.side .d-hero{position:relative;margin:0;padding:0;align-self:stretch;min-height:0;background:transparent;border:0;border-radius:0;overflow:hidden}
+  .d-split.side .d-hero img{position:absolute;inset:0;width:100%;height:100%;max-width:none;max-height:none;object-fit:contain}
+  .d-split.side .d-head{display:flex;flex-direction:column;grid-template-columns:minmax(0,1fr);margin-top:0;gap:26px;align-items:stretch}
+  .d-split.side .d-side{position:static;align-self:stretch;margin-top:auto}
 .d-head{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:clamp(24px,3.2vw,48px);margin-top:clamp(28px,4vw,46px);align-items:start;position:relative;min-width:0}
 .d-ttl{position:relative;margin-bottom:clamp(10px,1.5vw,18px)}
 .d-ttl .en-big{display:block;font-family:var(--en);font-weight:900;font-size:var(--en-big,56px);line-height:1.06;letter-spacing:4px;text-transform:uppercase;color:transparent;-webkit-text-stroke:1px rgba(20,22,23,.26);white-space:normal;margin:5px 0 0;pointer-events:none;user-select:none}
@@ -426,8 +426,9 @@
   @media (max-width:1000px){
     .grid{grid-template-columns:1fr 1fr}
     .d-head{grid-template-columns:1fr}
-    .d-split.tall{grid-template-columns:1fr;gap:0}
-    .d-split.tall .d-hero img{max-height:min(70svh,560px)}
+    .d-split.side{grid-template-columns:1fr;gap:0}
+    .d-split.side .d-hero{min-height:42svh}
+    .d-split.side .d-hero img{max-height:min(70svh,560px)}
     .d-hero.wide{margin-left:calc(var(--pad) * -1);margin-right:calc(var(--pad) * -1)}
     .shot.pano a{margin-left:calc(var(--pad) * -1);margin-right:calc(var(--pad) * -1)}
     .d-side{position:static}
@@ -691,6 +692,7 @@
 .stream-flow img{width:39%!important;max-width:39%!important}
 /* ── 详情页首图完整显示，不裁切 ── */
 .d-hero img{max-height:none!important;object-fit:contain!important}
+.d-split.side .d-hero img{max-height:100%!important}
 /* ── 作品卡灰色英文：最多两行、字号缩小 ── */
 .work .cap .sub u,.cat-card .cap .sub u{font-size:8.5px!important;line-height:1.32;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;max-height:2.7em;letter-spacing:.06em}
 .cat-card .cap .sub u{-webkit-line-clamp:2}
@@ -1445,9 +1447,9 @@ function workView(id){
   const idx = WORKS.findIndex(x=>x.id===w.id);
   const prev = WORKS[idx-1], next = WORKS[idx+1];
   const ar = AR[w.id] || 1.2;
-  const heroCls = STREAM.has(w.id) ? ' wide band' : (ar < 0.45 ? ' wide tallshot xlong' : '');
-  const tall = ar >= 0.45 && ar < 0.8;
   const stream = STREAM.has(w.id);
+  const heroCls = stream ? ' wide band' : (ar < 0.45 ? ' wide tallshot xlong' : '');
+  const side = ar >= 0.45 && ar <= 1.75;
   const stage = w.cat==='ec' ? '在职 · 万岛电商' : '在校期间作品';
   const rest = w.imgs.slice(1);
   return `
@@ -1458,7 +1460,7 @@ function workView(id){
         <span class="d-count">${pad(idx+1)} / ${pad(WORKS.length)}</span>
         <span class="corner"><i class="rt"></i><i class="rt"></i><i class="rt"></i></span>
       </div>
-      <div class="d-split${tall?' tall':''}">
+      <div class="d-split${side?' side':''}">
       <div class="d-hero${heroCls} rv"><img src="${w.imgs[0]}" alt="${w.title}"></div>
 
       <div class="d-head">
@@ -2099,9 +2101,14 @@ router();
         var nw=img.naturalWidth||0; if(!nw)return;
         if(img.closest('.d-hero')){
           if(window.innerWidth<=640){ img.style.maxWidth=Math.round(cw*0.96)+'px'; img.style.marginLeft='auto'; img.style.marginRight='auto'; return; }
-          var nh0=img.naturalHeight||1, rr=nw/nh0;
-          var t=Math.min(1,Math.max(0,(rr-0.5)/0.7));
-          img.style.maxWidth=Math.round(cw*(0.40+0.30*t))+'px';
+          if(img.closest('.d-split.side')){
+            img.style.maxWidth='100%';
+            img.style.maxHeight='100%';
+          }else{
+            var nh0=img.naturalHeight||1, rr=nw/nh0;
+            var t=Math.min(1,Math.max(0,(rr-0.5)/0.7));
+            img.style.maxWidth=Math.round(cw*(0.40+0.30*t))+'px';
+          }
         }else{
           img.style.maxWidth=Math.round(Math.min(cw,Math.max(nw*1.35,480)))+'px';
         }
