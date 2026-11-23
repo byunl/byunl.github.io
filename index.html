@@ -1449,7 +1449,7 @@ function workView(id){
   const ar = AR[w.id] || 1.2;
   const stream = STREAM.has(w.id);
   const heroCls = stream ? ' wide band' : (ar < 0.45 ? ' wide tallshot xlong' : '');
-  const side = ar >= 0.45 && ar <= 1.75;
+  const side = ar >= 0.45;
   const stage = w.cat==='ec' ? '在职 · 万岛电商' : '在校期间作品';
   const rest = w.imgs.slice(1);
   return `
