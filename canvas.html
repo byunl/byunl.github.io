@@ -83,7 +83,7 @@
   .menu a .no{font-family:var(--en);font-weight:900;font-size:10px;position:absolute;bottom:-22px;left:1px;color:var(--line);letter-spacing:.09em}
   .menu a:last-child{margin-right:-.1em}
   .menu a:hover,.menu a.active{color:var(--ink)}
-  .menu .nav-ink{position:absolute;left:0;bottom:-4px;width:0;height:9px;background:var(--red);transform:skewX(-16deg);transform-origin:left bottom;z-index:1;pointer-events:none;opacity:0;transition:left .8s cubic-bezier(.32,.94,.28,1),width .8s cubic-bezier(.32,.94,.28,1),opacity .2s ease}
+  .menu .nav-ink{position:absolute;left:0;bottom:3px;width:0;height:6px;background:var(--red);transform:skewX(-16deg);transform-origin:left bottom;z-index:1;pointer-events:none;opacity:0;transition:left .8s cubic-bezier(.32,.94,.28,1),width .8s cubic-bezier(.32,.94,.28,1),opacity .2s ease}
   .menu .nav-ink.on{opacity:1}
   .menu .nav-ink.init{transition:none}
 
@@ -460,13 +460,13 @@
 }
 @media (max-width:640px){
     .grid{grid-template-columns:1fr}
-    .menu{gap:18px}
-    .menu a{font-size:14px;letter-spacing:.08em}
+    .menu{gap:20px}
+    .menu a{font-size:16px;letter-spacing:.08em}
     .menu a .no{display:none}
     .ticker{display:none}
-    .nav-in{height:62px;gap:14px}
-    .brand{font-size:16px}
-    .brand span{font-size:9px}
+    .nav-in{height:66px;gap:16px}
+    .brand{font-size:17px}
+    .brand span{font-size:10px}
     .hero{padding-top:96px;min-height:auto}
     .hero-top{position:static;flex-direction:column;gap:5px;margin-bottom:24px;padding:0 var(--pad);font-size:9px;letter-spacing:.14em;align-items:flex-start;text-align:left}
     .hero-foot{flex-direction:column;align-items:flex-start;gap:12px}
@@ -1166,8 +1166,8 @@ function placeInk(instant){
   if(!navInk) return;
   if(!a){ navInk.classList.remove('on'); return; }
   if(instant) navInk.classList.add('init');
-  navInk.style.width = (a.offsetWidth + 8) + 'px';
-  navInk.style.left = (a.offsetLeft - 4) + 'px';
+  navInk.style.width = (a.offsetWidth + 4) + 'px';
+  navInk.style.left = (a.offsetLeft - 2) + 'px';
   navInk.classList.add('on');
   if(instant){
     requestAnimationFrame(()=>requestAnimationFrame(()=>navInk.classList.remove('init')));
