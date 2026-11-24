@@ -1171,6 +1171,18 @@ const CAT_ORDER = ['ec','poster','type','logo','pack','book','illus','web'];
 /* 展示顺序：实盘电商在前，同类聚拢，强弱按作品完成度排 */
 const ORDER = [19,84,22,87,21,2,5,81,53,56,58,10,15,68,1,59,6,9,27,28,61,86,11,64,16,66,44,17,18,32,34,3,23,20,67,4,80,82,33,35,51,52,55,57,69,7,8,26,25,60,50,14,63,31,40,48,29,36,65];
 WORKS.sort((a,b)=>ORDER.indexOf(a.id)-ORDER.indexOf(b.id));
+
+/* ===== 图片输出统一：lazy / 首屏优先 / 宽高比兜底 ===== */
+function imgTag(src, alt, idx, eagerMax = 4) {
+  const eager = idx < eagerMax;
+  return `<img src="${src}" alt="${alt}" loading="${eager?'eager':'lazy'}" fetchpriority="${eager?'high':'auto'}" decoding="async" onload="this.style.setProperty('--ar',this.naturalWidth+'/'+this.naturalHeight)">`;
+}
+function fixCachedAspect(root) {
+  (root || document).querySelectorAll('img[loading]').forEach(img => {
+    if (img.complete && img.naturalWidth) img.style.setProperty('--ar', img.naturalWidth+'/'+img.naturalHeight);
+  });
+}
+
 const $ = (s,r=document)=>r.querySelector(s);
 
 /* ============ 导航红块：跟随选中项缓动滑动 ============ */
@@ -1316,7 +1328,7 @@ function homeView(){
             print:['印刷 / 物料','Print','assets/r_handbook1.webp']}[k];
           const n=WORKS.filter(w=>w.cat===k).length;
           return `<a class="cat-card rv d${(i%4)+1}" href="#/works?cat=${k}">
-            <span class="frame"><img src="${meta[2].replace('assets/','assets/thumbs/')}" alt="${meta[0]}" loading="lazy" decoding="async"></span>
+            <span class="frame">${imgTag(meta[2].replace('assets/','assets/thumbs/'), meta[0], i)}</span>
             <span class="cap">
               <span class="t">${meta[0]}</span>
               <span class="sub"><i>${n}组</i><u>${meta[1]} ↗</u></span>
@@ -1412,7 +1424,7 @@ function workCard(w,i){
   const ar = AR[w.id] || 1.2;
   return `<a class="work rv" href="#/work/${w.id}" style="--ar:${ar}">
     <div class="frame">
-      <img src="${w.imgs[0].replace('assets/','assets/thumbs/')}" alt="${w.title}" loading="lazy" decoding="async" fetchpriority="low">
+      ${imgTag(w.imgs[0].replace('assets/','assets/thumbs/'), w.title, i)}
       ${w.imgs.length>1?`<span class="badge">${w.imgs.length} 张</span>`:''}
       <div class="cue"><b>查看项目</b><span>${String(w.id).padStart(2,'0')} ↗</span></div>
     </div>
@@ -1449,7 +1461,7 @@ function workView(id){
         <span class="corner"><i class="rt"></i><i class="rt"></i><i class="rt"></i></span>
       </div>
       <div class="d-split${side?' side':''}${zoom}">
-      <div class="d-hero${heroCls} rv"><img src="${w.imgs[0]}" alt="${w.title}"></div>
+      <div class="d-hero${heroCls} rv"><img src="${w.imgs[0]}" alt="${w.title}" loading="eager" fetchpriority="high" decoding="async" onload="this.style.setProperty('--ar',this.naturalWidth+'/'+this.naturalHeight)"></div>
 
       <div class="d-head">
         <div>
@@ -1479,13 +1491,13 @@ function workView(id){
         </div>
         ${stream?`
         <div class="stream-flow">
-          ${flowImgs.map((g,i)=>`<a href="${g}" target="_blank" rel="noopener"><img src="${g}" alt="${w.title} ${i+1}"></a>`).join('')}
+          ${flowImgs.map((g,i)=>`<a href="${g}" target="_blank" rel="noopener">${imgTag(g, w.title+' '+(i+1), i, 1)}</a>`).join('')}
         </div>`:`
         <div class="shots${w.id===16?' keep':''}">
           ${rest.map((g,i)=>`
           <figure class="shot rv">
             <div class="lay"><span class="no">${String(i+1).padStart(2,'0')} / ${String(w.imgs.length).padStart(2,'0')}</span><span class="l"></span></div>
-            <a href="${g}" target="_blank" rel="noopener" class="pic"><img src="${g}" alt="${w.title} ${i+1}"><span class="more">完整长图 ↗</span></a>
+            <a href="${g}" target="_blank" rel="noopener" class="pic">${imgTag(g, w.title+' '+(i+1), i, 1)}<span class="more">完整长图 ↗</span></a>
             ${w.notes && w.notes[i] ? `<figcaption>${w.notes[i]}</figcaption>`:''}
           </figure>`).join('')}
         </div>`}
@@ -1652,6 +1664,7 @@ function router(){
     if(path==='works') __worksCat = catNow;
   }
 
+  fixCachedAspect(el);
   document.querySelectorAll('.menu a').forEach(a=>{
     const k = a.dataset.nav;
     a.classList.toggle('active', path.startsWith(k) || (k==='works' && path.startsWith('work/')));
