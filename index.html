@@ -1175,7 +1175,7 @@ function placeInk(instant){
   const sp=parseFloat(cs.letterSpacing)||0;
   const gCenter=mm.actualBoundingBoxLeft+gw/2+(txt.length-1)*sp/2;
   navInk.style.width=(gw+8)+'px';
-  navInk.style.left=(a.offsetLeft+gCenter)+'px';
+  navInk.style.left=(a.offsetLeft+gCenter-1)+'px';
   navInk.classList.add('on');
   if(instant){
     requestAnimationFrame(()=>requestAnimationFrame(()=>navInk.classList.remove('init')));
