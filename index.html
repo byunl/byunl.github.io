@@ -1706,16 +1706,26 @@ function shiftCorner(co, target, dy){
   if(isNaN(cur)) cur = co.offsetTop || 0;
   co.style.top = Math.round(cur + (tr.bottom - cr.bottom) + (dy || 0)) + 'px';
 }
-function glyphRect(el){
-  const r=document.createRange(); r.selectNodeContents(el);
-  return r.getBoundingClientRect();
+function inkRect(el){
+  const cs=getComputedStyle(el);
+  const probe=document.createElement('i');
+  probe.style.cssText='display:inline-block;width:1px;height:1px;vertical-align:baseline';
+  el.appendChild(probe);
+  const pr=probe.getBoundingClientRect();
+  const ctx=document.createElement('canvas').getContext('2d');
+  ctx.font=cs.fontWeight+' '+cs.fontSize+' '+cs.fontFamily;
+  const m=ctx.measureText(el.textContent.trim());
+  probe.remove();
+  const base=pr.bottom;
+  if(!m.actualBoundingBoxAscent){ const r=document.createRange(); r.selectNodeContents(el); const rr=r.getBoundingClientRect(); return {top:rr.top,bottom:rr.bottom}; }
+  return {top:base-m.actualBoundingBoxAscent, bottom:base+m.actualBoundingBoxDescent};
 }
 function alignTitle(c){
   const title=c.closest('h1,h2')||c.parentElement;
   const bg=title.querySelector('.bgw'); if(!bg) return;
   const bs=[...bg.querySelectorAll('b')];
   let gTop=Infinity,gBot=-Infinity;
-  bs.forEach(b=>{const r=glyphRect(b); gTop=Math.min(gTop,r.top); gBot=Math.max(gBot,r.bottom);});
+  bs.forEach(b=>{const r=inkRect(b); gTop=Math.min(gTop,r.top); gBot=Math.max(gBot,r.bottom);});
   if(!isFinite(gTop)) return;
   const tR=title.getBoundingClientRect();
   c.style.top=(gTop-tR.top)+'px';
@@ -1723,7 +1733,7 @@ function alignTitle(c){
   c.style.visibility='visible';
   const zh=title.querySelector('.zh');
   if(zh){
-    const z=glyphRect(zh);
+    const z=inkRect(zh);
     const enC=(gTop+gBot)/2, zC=(z.top+z.bottom)/2;
     zh.style.top=(zh.offsetTop+(enC-zC))+'px';
   }
