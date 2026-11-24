@@ -72,10 +72,10 @@
   @keyframes slide{to{transform:translateX(-50%)}}
   .menu{display:flex;gap:34px;position:relative}
   .menu a{font-size:16.5px;font-weight:500;letter-spacing:.1em;color:var(--gray);position:relative;z-index:2;padding:6px 0;transition:color .3s}
-  .menu a .no{font-family:var(--en);font-weight:900;font-size:10px;position:absolute;bottom:-22px;left:1px;color:var(--line);letter-spacing:.09em}
+  .menu a .no{font-family:var(--en);font-weight:900;font-size:12px;position:absolute;bottom:-17px;left:1px;color:var(--line);letter-spacing:.09em}
   .menu a:last-child{margin-right:-.1em}
   .menu a:hover,.menu a.active{color:var(--ink)}
-  .menu .nav-ink{position:absolute;left:50%;bottom:6px;width:0;height:6px;background:var(--red);transform:translateX(-50%) skewX(-16deg);transform-origin:center bottom;z-index:1;pointer-events:none;opacity:0;transition:left .8s cubic-bezier(.32,.94,.28,1),width .8s cubic-bezier(.32,.94,.28,1),opacity .2s ease}
+  .menu .nav-ink{position:absolute;left:50%;bottom:11px;width:0;height:9px;background:var(--red);transform:translateX(-50%) skewX(-16deg);transform-origin:center bottom;z-index:1;pointer-events:none;opacity:0;transition:left .8s cubic-bezier(.32,.94,.28,1),width .8s cubic-bezier(.32,.94,.28,1),opacity .2s ease}
   .menu .nav-ink.on{opacity:1}
   .menu .nav-ink.init{transition:none}
 
@@ -1165,7 +1165,7 @@ function placeInk(instant){
   if(!navInk) return;
   if(!a){ navInk.classList.remove('on'); return; }
   if(instant) navInk.classList.add('init');
-  navInk.style.width = a.offsetWidth + 'px';
+  navInk.style.width = (a.offsetWidth + 8) + 'px';
   navInk.style.left = (a.offsetLeft + a.offsetWidth / 2) + 'px';
   navInk.classList.add('on');
   if(instant){
