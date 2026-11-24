@@ -338,9 +338,9 @@
   .ab-now{margin-top:0;padding:0 0 9px;border-top:0;border-bottom:1px solid var(--line);margin-bottom:clamp(30px,4vw,52px)}
   .ab-now .k{font-family:var(--en);font-weight:900;font-size:10px;letter-spacing:.23em;color:var(--red);text-transform:uppercase;display:block;margin-bottom:8px}
   .ab-now p{font-size:13.5px;color:var(--gray);letter-spacing:.04em}
-  .ab-figure{position:relative;overflow:visible;width:100%;aspect-ratio:.86;display:block;align-self:end}
+  .ab-figure{position:relative;overflow:visible;width:100%;aspect-ratio:.86;display:block;align-self:end;container-type:inline-size}
   .ab-figure .wm-stack{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:0;z-index:0;pointer-events:none}
-  .ab-figure .wm{position:static;text-align:center;font-family:var(--en);font-weight:900;font-size:clamp(104px,14.4vw,206px);line-height:.76;letter-spacing:6px;color:transparent;-webkit-text-stroke:1px rgba(20,22,23,.26);user-select:none;pointer-events:none}
+  .ab-figure .wm{position:static;text-align:center;font-family:var(--en);font-weight:900;font-size:clamp(0px,46cqw,206px);line-height:.76;letter-spacing:6px;color:transparent;-webkit-text-stroke:1px rgba(20,22,23,.26);user-select:none;pointer-events:none}
   .ab-figure .wm.wei{position:relative;z-index:3;-webkit-text-stroke:1px rgba(20,22,23,.30)}
   .ab-figure .bars{position:absolute;z-index:4;right:0;display:flex;gap:6px}
   .ab-figure .bars.top{top:12px}
@@ -1957,22 +1957,6 @@ router();
   window.addEventListener('resize',placeNow);
   window.addEventListener('hashchange',function(){setTimeout(placeNow,450)});
   setTimeout(placeNow,1000);
-})();
-/* 关于页水印：三行英文按照片容器高度自适应，行与行不重叠（移动端沿用 CSS） */
-(function(){
-  function fitWm(){
-    if(window.matchMedia('(max-width:760px)').matches) return;
-    document.querySelectorAll('.ab-figure').forEach(function(fig){
-      const wms=fig.querySelectorAll('.wm'); if(!wms.length) return;
-      const h=fig.clientHeight; if(!h) return;
-      const fs=Math.min(206, h/3/0.76);
-      wms.forEach(w=>{ w.style.fontSize=fs+'px'; });
-    });
-  }
-  fitWm();
-  window.addEventListener('resize',fitWm);
-  window.addEventListener('hashchange',function(){setTimeout(fitWm,450)});
-  setTimeout(fitWm,900);
 })();
 /* 详情页标题：强制单行，按可用宽度自适应字号，右侧留空 */
 (function(){
