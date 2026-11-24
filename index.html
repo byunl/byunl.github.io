@@ -9,6 +9,7 @@
 <style>
   @font-face{font-family:"演示斜黑体";src:url("assets/yanshi.sub.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
   @font-face{font-family:"Swei Regular";src:url("assets/swei-Regular.sub.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+  @font-face{font-family:"Swei Bold";src:url("assets/swei-Bold.sub.woff2") format("woff2");font-weight:700;font-style:normal;font-display:swap}
   :root{
     --bg:#efefec; --ink:#141617; --gray:#6a6d71; --line:#dad7cf;
     --card:#ffffff; --red:#C8352B; --ease:cubic-bezier(.16,1,.3,1);
@@ -805,7 +806,7 @@
 .d-back,.d-count,.d-tags span,.d-side .k,.gal-top h2 small,.gal-top .hint,
 .shot .lay .no,.shot .more,.d-nav a .k,.ab-now .k,.ab-facts .f span em,
 .cap-row h3 em,.job .when,.job .t em i,.sk .k em,.awards .a .y,
-.awards .a .lvl,.step .k,.partners .pl-k b{
+.awards .a .lvl,.step .k{
   font-family:"Swei Regular",var(--zh),sans-serif!important;
   font-weight:400!important;
   letter-spacing:.20em;
@@ -813,12 +814,13 @@
 /* 10px 残留标签字重统一 400（仅压字重，保留各自字体与字距） */
 .ab-facts .f span i,.d-side .r span,.work .cap .ttl b,.cap-row h3,
 .foot-row i,.sk .k i,.cat-card .cap .t,.work .cap .sub i,
-.cat-card .cap .sub i,.hero-top span,.partners,.partners .pl-list,.pl-list,.partners .pl-list span,.partners .pl-k,.foot{
+.cat-card .cap .sub i,.hero-top span,.foot{
   font-weight:400!important;
 }
-/* 合作对象区块换真实 400 切片，避免 yanshi 900 单切片视觉偏粗 */
-.partners .pl-k,.partners .pl-list,.partners .pl-list span{
-  font-family:"Swei Regular",var(--zh),sans-serif!important;
+/* 合作对象区块：真实 700 切片 */
+.partners,.partners .pl-list,.partners .pl-list span,.partners .pl-k,.partners .pl-k b{
+  font-family:"Swei Bold",var(--zh),sans-serif!important;
+  font-weight:700!important;
 }
 .contact .meta{font-weight:900!important;letter-spacing:.17em}
 </style>
